@@ -1,3 +1,8 @@
+- if @worker.avatar?
+  = image_tag(@worker.avatar) 
+- else
+  = image_tag("ava_default.gif")
+
 h1 Сотрудник: #{@worker.name}
 h3 #{@worker.department.name}
 hr/

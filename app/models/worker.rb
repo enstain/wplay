@@ -45,6 +45,9 @@ class Worker
   field :coins, type: Integer, default: 0
   field :level, type: Integer, default: 0
 
+  field :avatar, type: String
+  mount_uploader :avatar, AvatarUploader
+
   def mail_create
     ContactMailer.welcome_email(self).deliver
   end

@@ -33,6 +33,11 @@ gem 'mongoid_nested_set', '0.1.3'
 gem 'mongoid_search'
 gem 'mongoid_slug', '~> 3.0.0'
 
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'carrierwave-meta', github: 'gzigzigzeo/carrierwave-meta' # github has md5
+gem 'mini_magick', '~> 3.4'
+gem 'thumbkit'
+
 gem 'nokogiri'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'

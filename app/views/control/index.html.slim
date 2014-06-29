@@ -18,7 +18,11 @@ table.table
   tbody
     - for worker in @workers
       tr
-        td -
+        td
+          - if worker.avatar?
+            = image_tag(worker.avatar.thumb) 
+          - else
+            = image_tag("ava_default.gif", size: "64x64")
         td 
           = link_to worker.name, worker_path(worker)
         td #{worker.email}
