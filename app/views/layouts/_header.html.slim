@@ -1,0 +1,9 @@
+.header
+    ul.nav.nav-pills.pull-right
+      li
+      	= link_to "Войти на сайт", new_worker_session_path()
+      - if admin_signed_in?
+        li
+          = link_to "Админка", control_index_path()
+    h3.text-muted 
+      = link_to "Work & Play", root_path()
