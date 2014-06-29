@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby "2.0.0"
 
 gem 'rails', '4.0.0'
+gem 'rs_russian'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.2'
@@ -40,6 +41,7 @@ gem "slim", "~> 1.3.6"
 gem 'simple_form', '>= 2.1.0'
 
 gem "rails_admin"
+gem 'rails_admin_settings'
 gem "devise"
 gem 'unicorn'
 gem 'capistrano'

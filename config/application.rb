@@ -12,6 +12,9 @@ end
 module Wplay
   class Application < Rails::Application
     config.encoding = "utf-8"
+    config.time_zone = 'Moscow'
+    config.i18n.enforce_available_locales = false
+    I18n.enforce_available_locales = false
     config.filter_parameters += [:password]
     config.active_support.escape_html_entities_in_json = true
     config.assets.enabled = true

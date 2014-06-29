@@ -1,2 +1,19 @@
-h1 Control#invite
-p Find me in app/views/control/invite.html.slim
+- if flash[:notice]
+  .alert.alert-success[role="alert"]
+    = flash[:notice]
+- if flash[:error]
+  .alert.alert-danger[role="alert"]
+    = flash[:error]
+
+- @pass = rndpass()
+
+= simple_form_for @worker, url: control_invited_path() do |f|
+  .form-inputs
+    = f.input :name, required: true, type: "text", label: false, placeholder: "ФИО сотрудника"
+    = f.input :email, required: true, type: "email", label: false, placeholder: "E-mail сотрудника"
+    = f.association :department, collection: Department.all, required: true, label: "Отдел"
+    = f.hidden_field :password, value: @pass
+    = f.hidden_field :password_confirmation, value: @pass
+    = f.button :submit, "Добавить", class: "btn-block"
+
+= link_to "Список сотрудников", control_index_path()

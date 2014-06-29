@@ -1,8 +1,11 @@
 class Worker
   include Mongoid::Document
+
+  after_create :mail_create
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable,
+  devise :database_authenticatable, #:confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
@@ -33,4 +36,17 @@ class Worker
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
+
+  validates :name, presence: true
+  validates :department, presence: true
+
+  field :name, type: String
+  belongs_to :department
+  field :coins, type: Integer, default: 0
+  field :level, type: Integer, default: 0
+
+  def mail_create
+    ContactMailer.welcome_email(self).deliver
+  end
+
 end

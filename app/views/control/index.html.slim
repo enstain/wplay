@@ -1,2 +1,31 @@
-h1 Control#index
-p Find me in app/views/control/index.html.slim
+= link_to "Пригласить сотрудника", control_invite_path()
+
+- if flash[:notice]
+  .alert.alert-success[role="alert"]
+    = flash[:notice]
+- if flash[:error]
+  .alert.alert-danger[role="alert"]
+    = flash[:error]
+
+table.table
+  thead
+    tr
+      th #
+      th name
+      th email
+      th department
+      th coins
+  tbody
+    - for worker in @workers
+      tr
+        td -
+        td 
+          = link_to worker.name, worker_path(worker)
+        td #{worker.email}
+        td #{worker.department.name}
+        td
+          #{worker.coins} |
+          = simple_form_for worker, url: control_update_worker_path(worker), method: :post do |f|
+            = number_field_tag :add_coins, 0, in: 1..100
+            = f.submit "+"
+
