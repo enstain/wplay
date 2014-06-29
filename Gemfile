@@ -29,7 +29,7 @@ gem 'mongoid_nested_set', '0.1.3'
 gem 'mongoid_search'
 gem 'mongoid_slug', '~> 3.0.0'
 
-gem 'nokogiri', '1.6.1'
+gem 'nokogiri'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
