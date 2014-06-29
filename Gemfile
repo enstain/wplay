@@ -11,6 +11,9 @@ group :assets do
   gem 'font-awesome-rails'
 end
 
+gem 'execjs'
+gem 'therubyracer'
+
 group :development do
   gem 'slim-rails'
   gem 'better_errors', '>= 0.7.2'
