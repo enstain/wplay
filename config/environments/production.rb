@@ -51,8 +51,9 @@ Wplay::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # Disable delivery errors, bad email addresses will be ignored
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
-  config.action_mailer.raise_delivery_errors = false
+  #config.action_mailer.raise_delivery_errors = false
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 
   # Enable threaded mode
   # config.threadsafe!
@@ -64,5 +65,4 @@ Wplay::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   
-
 end
