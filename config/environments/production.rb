@@ -53,7 +53,7 @@ Wplay::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   #config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "smtp.locum.ru", :port => 25 }
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 25 }
 
   # Enable threaded mode
   # config.threadsafe!
