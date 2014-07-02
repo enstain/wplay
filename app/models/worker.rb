@@ -42,6 +42,7 @@ class Worker
 
   field :name, type: String
   belongs_to :department
+  has_many :actions, as: :action_object, dependent: :destroy
   field :coins, type: Integer, default: 0
   field :level, type: Integer, default: 0
 
