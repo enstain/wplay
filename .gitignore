@@ -17,6 +17,7 @@
 
 /config/mongoid.yml
 /config/mongoid_production.yml
+/config/mail.yml
 
 /db/*.javadb/
 /db/*.sqlite3

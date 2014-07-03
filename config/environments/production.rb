@@ -52,8 +52,20 @@ Wplay::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :sendmail
-  #config.action_mailer.smtp_settings = { :address => "localhost", :port => 25 }
+  
+  MAIL_CONF_PATH = Rails.root.join("config", "mail.yml")
+  MAIL_CONF = YAML.load_file(MAIL_CONF_PATH)
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'mail.locum.ru',
+    port:                 25,
+    domain:               'v-times.ru',
+    user_name:            MAIL_CONF['locum']['user'],
+    password:             MAIL_CONF['locum']['password'],
+    authentication:       'plain',
+    enable_starttls_auto: true  
+  }
 
   # Enable threaded mode
   # config.threadsafe!

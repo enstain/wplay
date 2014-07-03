@@ -85,6 +85,7 @@ end
 namespace :deploy do
   task :update_config do
     transfer :up, 'config/mongoid_production.yml', "#{release_path}/config/mongoid.yml", via: :scp
+    transfer :up, 'config/mail.yml', "#{release_path}/config/mail.yml", via: :scp
   end
 end
 
