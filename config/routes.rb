@@ -12,6 +12,7 @@ Wplay::Application.routes.draw do
   get "control/invite"
   post "control/invited"
   post "control/update_worker/:id", to: "control#update_worker", as: "control_update_worker"
+  get "/workers/sign_in_token", to: "workers#sign_in_token", as: "sign_in_token", via: :get
 
   resources :workers
 

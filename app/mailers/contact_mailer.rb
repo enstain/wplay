@@ -1,7 +1,7 @@
 # coding: utf-8
 
 class ContactMailer < ActionMailer::Base
-  Settings.site(default: 'wplay.ru')
+  Settings.site(default: 'workplay.in')
 
   default from: "noreply@#{Settings.site}"
 
@@ -9,7 +9,7 @@ class ContactMailer < ActionMailer::Base
     @worker = worker
     mail(
         to: @worker.email, 
-        subject: '[WPLAY] Добро пожаловать на сайт'
+        subject: '[WORKPLAY.IN] Добро пожаловать на сайт'
     )
   end
 

@@ -1,4 +1,6 @@
-<%= link_to "Я администратор", new_admin_session_path() %><br />
+<%- if controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to "Я администратор", new_admin_session_path() %><br />
+<% end -%> 
 
 <%- if controller_name != 'sessions' %>
   <%= link_to "Войти", new_session_path(resource_name) %><br />

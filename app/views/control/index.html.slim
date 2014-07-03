@@ -1,11 +1,15 @@
-= link_to "Пригласить сотрудника", control_invite_path()
-
 - if flash[:notice]
   .alert.alert-success[role="alert"]
     = flash[:notice]
 - if flash[:error]
   .alert.alert-danger[role="alert"]
     = flash[:error]
+
+.row
+  .col-sm-12
+    = link_to "Пригласить сотрудника", control_invite_path(), class: "btn btn-primary"
+
+hr
 
 table.table
   thead

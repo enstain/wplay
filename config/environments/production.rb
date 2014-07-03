@@ -51,7 +51,7 @@ Wplay::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # Disable delivery errors, bad email addresses will be ignored
-  config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.raise_delivery_errors = true
   
   MAIL_CONF_PATH = Rails.root.join("config", "mail.yml")
   MAIL_CONF = YAML.load_file(MAIL_CONF_PATH)
@@ -65,7 +65,6 @@ Wplay::Application.configure do
     password:             MAIL_CONF['locum']['password'],
     authentication:       'login',
     enable_starttls_auto: false,
-    return_response: true
   }
 
   # Enable threaded mode

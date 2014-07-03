@@ -1,3 +1,7 @@
-h2 #{@worker.name}
-p login: #{@worker.email}
-p password: #{@worker.password}
+h2 Здравствуйте, #{@worker.name}
+h3 Вы были приглашены на сайт workplay.in
+
+p Ваш логин: #{@worker.email}
+p Ваш пароль: #{@worker.password}
+
+a[href="#{url_for(controller: 'workers', action: 'sign_in_token', user_token: @worker.authentication_token, only_path: false)}"] Ссылка для быстрого входа (действует сутки с момента приглашения):

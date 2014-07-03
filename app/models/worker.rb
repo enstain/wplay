@@ -1,7 +1,9 @@
 class Worker
   include Mongoid::Document
+  include Mongoid::Timestamps::Short
 
   after_create :mail_create
+  before_save :ensure_authentication_token
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -49,8 +51,25 @@ class Worker
   field :avatar, type: String
   mount_uploader :avatar, AvatarUploader
 
+  field :authentication_token, type: String
+
+  def ensure_authentication_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
+
   def mail_create
-    ContactMailer.welcome_email(self).deliver!
+    ContactMailer.welcome_email(self).deliver
+  end
+
+  private
+  
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless Worker.where(authentication_token: token).first
+    end
   end
 
 end
