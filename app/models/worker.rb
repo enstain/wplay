@@ -50,7 +50,7 @@ class Worker
   mount_uploader :avatar, AvatarUploader
 
   def mail_create
-    ContactMailer.welcome_email(self).deliver
+    ContactMailer.welcome_email(self).deliver!
   end
 
 end
