@@ -8,8 +8,4 @@
 .row.marketing
   .col-lg-12
     - for action in @actions
-      .panel.panel-default
-	    .panel-heading
-	      h3.panel-title #{Russian::strftime(action.c_at, "%d %B в %H:%M")}
-	    .panel-body
-		  == action.content
+      = render "board/action", action: action

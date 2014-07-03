@@ -42,6 +42,7 @@ gem 'nokogiri'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
+gem 'enumerize'
 gem "slim", "~> 1.3.6"
 gem 'simple_form', '>= 2.1.0'
 

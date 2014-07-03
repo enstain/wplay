@@ -1,4 +1,11 @@
 ru:
+  enumerize:
+    action:
+      type:
+        plain_action: "На сайте что-то произошло"
+        new_user: "Встречайте нового сотрудника"
+        user_get_coins: "Сотрудник получил монеты"
+
   views:
     pagination:
       first: "&laquo;"

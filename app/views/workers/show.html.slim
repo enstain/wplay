@@ -5,10 +5,7 @@
   .alert.alert-danger[role="alert"]
     = flash[:error]
 
-- if @worker.avatar?
-  = image_tag(@worker.avatar) 
-- else
-  = image_tag("ava_default.gif")
+= image_tag(@worker.get_avatar)
 
 h1 Сотрудник: #{@worker.name}
 h3 #{@worker.department.name}

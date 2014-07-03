@@ -53,6 +53,14 @@ class Worker
 
   field :authentication_token, type: String
 
+  def get_avatar
+    get_avatar = self.avatar? ? self.avatar : "ava_default.gif"
+  end
+
+  def get_thumb_avatar
+    get_thumb_avatar = self.avatar? ? self.avatar.thumb : "ava_default.gif"
+  end
+
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token

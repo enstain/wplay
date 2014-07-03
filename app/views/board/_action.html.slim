@@ -1,0 +1,11 @@
+.panel.panel-default
+  .panel-heading
+    h3.panel-title #{action_date(action.c_at)}
+  .panel-body
+    .media
+	  a.pull-left[href="#"]
+	    = image_tag(action.action_object.get_thumb_avatar, class: "media-object", size: "40x40")
+	  .media-body
+	    h4.media-heading #{action.type.text}
+	    == action.content
+    
