@@ -59,13 +59,12 @@ Wplay::Application.configure do
   config.action_mailer.delivery_method = :smtp
   
   config.action_mailer.smtp_settings = {
-    enable_starttls_auto: true,
     address:              'smtp.yandex.ru',
-    domain:               "smtp.yandex.ru",
-    port:                 465,
+    port:                 587,
+    domain:               'workplay.in',
     user_name:            MAIL_CONF['locum']['user'],
     password:             MAIL_CONF['locum']['password'],
-    authentication: :plain
+    authentication: "plain"
   }
 
   # Enable threaded mode
