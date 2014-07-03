@@ -63,8 +63,9 @@ Wplay::Application.configure do
     domain:               'workplay.in',
     user_name:            MAIL_CONF['locum']['user'],
     password:             MAIL_CONF['locum']['password'],
-    authentication:       'plain',
-    enable_starttls_auto: false
+    authentication:       'login',
+    enable_starttls_auto: false,
+    return_response: true
   }
 
   # Enable threaded mode
