@@ -58,13 +58,13 @@ Wplay::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'mail.locum.ru',
+    address:              'smtp.locum.ru',
     port:                 25,
     domain:               'workplay.in',
     user_name:            MAIL_CONF['locum']['user'],
     password:             MAIL_CONF['locum']['password'],
     authentication:       'plain',
-    enable_starttls_auto: true  
+    enable_starttls_auto: false
   }
 
   # Enable threaded mode
