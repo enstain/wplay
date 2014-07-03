@@ -57,6 +57,7 @@ Wplay::Application.configure do
   MAIL_CONF = YAML.load_file(MAIL_CONF_PATH)
 
   config.action_mailer.delivery_method = :smtp
+  
   config.action_mailer.smtp_settings = {
     address:              'smtp.yandex.ru',
     port:                 25,
@@ -64,7 +65,7 @@ Wplay::Application.configure do
     user_name:            MAIL_CONF['locum']['user'],
     password:             MAIL_CONF['locum']['password'],
     enable_starttls_auto: false,
-    authentication: :login,
+    authentication: :plain,
     openssl_verify_mode: "none"
   }
 
