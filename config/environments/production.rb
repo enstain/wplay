@@ -61,7 +61,7 @@ Wplay::Application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.yandex.ru',
     port:                 25,
-    domain:               'workplay.in',
+    domain:               'mail.workplay.in',
     user_name:            MAIL_CONF['locum']['user'],
     password:             MAIL_CONF['locum']['password'],
     enable_starttls_auto: false,
