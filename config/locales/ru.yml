@@ -6,6 +6,13 @@ ru:
         new_user: "Встречайте нового сотрудника"
         user_get_coins: "Сотрудник получил монеты"
 
+  date:
+    datepicker:
+      default: "dd/mm/yyyy"
+      long: "dd MM, yyyy"
+    formats:
+      default: '%d/%m/%Y'
+
   views:
     pagination:
       first: "&laquo;"

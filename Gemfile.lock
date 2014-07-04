@@ -50,6 +50,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-datepicker-rails (1.3.0.2)
+      railties (>= 3.0)
     bootstrap-kaminari-views (0.0.3)
       kaminari (>= 0.13)
       rails (>= 3.1)
@@ -284,11 +286,13 @@ PLATFORMS
 DEPENDENCIES
   better_errors (>= 0.7.2)
   binding_of_caller (>= 0.7.1)
+  bootstrap-datepicker-rails
   bootstrap-kaminari-views
   capistrano
   capistrano-unicorn
   carrierwave-meta!
   carrierwave-mongoid
+  coffee-rails
   devise
   enumerize
   execjs

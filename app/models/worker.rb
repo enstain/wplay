@@ -51,6 +51,11 @@ class Worker
   field :avatar, type: String
   mount_uploader :avatar, AvatarUploader
 
+  field :birth, type: Date
+  field :contacts, type: String
+  field :about, type: String
+  field :education, type: String
+
   field :authentication_token, type: String
 
   def get_avatar

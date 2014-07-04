@@ -5,10 +5,23 @@
   .alert.alert-danger[role="alert"]
     = flash[:error]
 
-= image_tag(@worker.get_avatar)
+.row
+  .col-sm-4
+    = image_tag(@worker.get_avatar)
 
-h1 Сотрудник: #{@worker.name}
-h3 #{@worker.department.name}
-hr/
-p Уровень: #{@worker.level}
-p Монет: #{@worker.coins}
+    h3 
+      span.label.label-default #{@worker.level}
+      |&nbsp;уровень
+
+    p Монет: #{@worker.coins}
+
+  .col-sm-8
+    - if current_worker == @worker
+      = link_to "Редактировать", edit_path()
+
+	h1 #{@worker.name}
+
+    p Отдел: #{@worker.department.name}
+	p День рождения: #{l @worker.birth}
+	p Контакты:
+	p Увлечения:

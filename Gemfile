@@ -10,6 +10,8 @@ group :assets do
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
   gem 'font-awesome-rails'
+  gem 'bootstrap-datepicker-rails'
+  gem 'coffee-rails'
 end
 
 gem 'execjs'
