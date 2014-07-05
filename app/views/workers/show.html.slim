@@ -17,11 +17,12 @@
 
   .col-sm-8
     - if current_worker == @worker
-      = link_to "Редактировать", edit_path()
+      = link_to "Редактировать информацию", edit_path(), class: "btn btn-primary"
 
-	h1 #{@worker.name}
+  	h1 #{@worker.name}
+    p День рождения: #{l @worker.birth}
 
     p Отдел: #{@worker.department.name}
-	p День рождения: #{l @worker.birth}
-	p Контакты:
-	p Увлечения:
+    p Образование: #{@worker.education}
+  	p Контакты: #{@worker.contacts}
+  	p Увлечения: #{@worker.about}

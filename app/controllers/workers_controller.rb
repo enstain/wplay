@@ -54,4 +54,5 @@ class WorkersController < ApplicationController
       sign_in_and_redirect worker
     end
   end
+  
 end
