@@ -11,7 +11,9 @@
     = simple_form_for @worker, url: update_path(), html: { class: "form-horizontal"} do |f|
       = f.input :name, required: true, type: "text", label: "Ваше ФИО", html: {  class: "col-sm-12" }
       = f.input :email, required: true, type: "email", label: "Ваш e-mail"
-      = f.input :birth, as: :bootstrap_datepicker, label: "Дата рождения"
+      = f.input :birth, as: :date, label: "Дата рождения", start_year: Date.today.year - 60,
+                              end_year: Date.today.year - 12
+      /, :input_html => { :data => {:provide => :datepicker} }
       = f.input :education, label: "Образование"
       = f.input :contacts, label: "Контакты"
       = f.input :about, label: "Увлечения"

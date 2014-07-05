@@ -1,6 +1,7 @@
 class Worker
   include Mongoid::Document
   include Mongoid::Timestamps::Short
+  include Mongoid::MultiParameterAttributes
 
   after_create :mail_create
   before_save :ensure_authentication_token

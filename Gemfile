@@ -28,7 +28,7 @@ group :development do
   gem "mailcatcher"
 end
 
-gem 'mongoid', '>= 3.1.2'
+gem "mongoid", "~> 4.0.0"
 gem 'mongoid-grid_fs' #, github: 'ahoward/mongoid-grid_fs'
 gem 'mongoid-sequence', github: 'xronos-i-am/mongoid-sequence'
 gem 'mongoid_nested_set', '0.1.3'
