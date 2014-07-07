@@ -26,7 +26,7 @@ class WorkersController < ApplicationController
 
     respond_to do |format|
       if @worker.update_attributes(params[:worker])
-        format.html { redirect_to profile_path, notice: 'Профиль обновлён' }
+        format.html { redirect_to worker_path(current_worker), notice: 'Профиль обновлён' }
       else
         flash[:error] = @worker.errors.full_messages.join("\n")
         format.html { render action: "edit" }

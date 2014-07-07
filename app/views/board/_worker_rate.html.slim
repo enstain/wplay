@@ -1,0 +1,12 @@
+tr
+  td.place-cell #{index+1}
+  td
+    = link_to worker_path(worker) do 
+      |#{worker.name}
+      br
+      .department
+        |#{worker.department.name}
+  td
+    = link_to worker_path(worker) do
+      = image_tag(worker.get_thumb_avatar, size: "40x40")
+  td.rate-cell #{worker.xp}

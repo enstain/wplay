@@ -1,5 +1,7 @@
 .header
     ul.nav.nav-pills.pull-right
+      li
+        = link_to "Рейтинг", rating_path()
 
       - if admin_signed_in?
         li

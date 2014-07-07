@@ -76,7 +76,7 @@ class Worker
   def raise_xp(coins)
     self.xp += coins
     self.xp_current += coins
-    if (self.xp_current >= self.xp_to_next_level)
+    while (self.xp_current >= self.xp_to_next_level)
       self.xp_current -= self.xp_to_next_level
       self.level += 1
     end

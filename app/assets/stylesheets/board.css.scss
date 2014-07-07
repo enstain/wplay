@@ -1,3 +1,21 @@
 // Place all the styles related to the Board controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.rating-table {
+	font-size: 18px;
+
+	.place-cell, .place-head {
+		text-align: center;
+	}
+
+	.place-cell {
+		font-size: 36px;
+	}
+
+	.department {
+		font-size: 14px;
+		font-weight: normal;
+	}
+
+}
