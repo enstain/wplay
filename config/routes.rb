@@ -14,7 +14,7 @@ Wplay::Application.routes.draw do
   
   get "/workers/sign_in_token", to: "workers#sign_in_token", as: "sign_in_token", via: :get
   get "/workers/test_sign_in", to: "workers#test_sign_in", as: "test_sign_in", via: :get
-  get "profile", to: "workers#profile", as: "profile"
+  #get "/workers/:id", to: "workers#profile", as: "profile"
   get "/profile/edit", to: "workers#edit", as: "edit"
   patch "/profile/update", to: "workers#update", as: "update"
 

@@ -13,7 +13,6 @@
       = f.input :email, required: true, type: "email", label: "Ваш e-mail"
       = f.input :birth, as: :date, label: "Дата рождения", start_year: Date.today.year - 60,
                               end_year: Date.today.year - 12
-      /, :input_html => { :data => {:provide => :datepicker} }
       = f.input :education, label: "Образование"
       = f.input :contacts, label: "Контакты"
       = f.input :about, label: "Увлечения"

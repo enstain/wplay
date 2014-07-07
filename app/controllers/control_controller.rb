@@ -16,8 +16,7 @@ class ControlController < ApplicationController
     
       if @worker.save
         flash[:notice] = 'Сотрудник успешно приглашён'
-        @link = ActionController::Base.helpers.link_to @worker.name, worker_path(@worker)
-        Action.create(content: "Сотрудник #{@link} был приглашён на сайт администратором", action_object: @worker, type: :new_user)
+        Action.create(action_object: @worker, type: :new_user)
         redirect_to control_invite_path
       else
         flash[:error] = @worker.errors.full_messages.join("\n")
@@ -29,11 +28,11 @@ class ControlController < ApplicationController
     @worker = Worker.find(params[:id])
     @acoins = params[:add_coins].to_i
     @worker.coins += @acoins
+    @worker.raise_xp(@acoins)
 
     if @worker.save
        flash[:notice] = 'Сохранено'
-       @link = ActionController::Base.helpers.link_to @worker.name, worker_path(@worker)
-       Action.create(content: "Сотрудник #{@link} получил #{ApplicationController.helpers.coiner(@acoins)}", action_object: @worker, type: :user_get_coins)
+       Action.create(action_object: @worker, type: :user_get_coins, tie: ApplicationController.helpers.coiner(@acoins))
        redirect_to control_index_path()
     else
        flash[:error] = 'Ошибка'

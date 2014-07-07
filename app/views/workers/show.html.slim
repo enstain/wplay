@@ -7,22 +7,36 @@
 
 .row
   .col-sm-4
-    = image_tag(@worker.get_avatar)
+    = image_tag(@worker.get_avatar, class: "img-responsive avatar")
 
-    h3 
-      span.label.label-default #{@worker.level}
-      |&nbsp;уровень
+    - if current_worker == @worker
+      = link_to "Редактировать анкету", edit_path(), class: "btn btn-primary btn-block"
+    
+    hr
 
-    p Монет: #{@worker.coins}
+    /- if current_worker == @worker
+    .progress
+      .progress-bar.progress-bar-success[role="progressbar" aria-valuenow=@worker.xp_current aria-valuemin="0" aria-valuemax=@worker.xp_to_next_level style="width: #{@worker.xp_current*100/@worker.xp_to_next_level}%;"] 
+        span #{@worker.xp_current} (#{@worker.xp_to_next_level})
+
+    .row
+      span.col-sm-6[title="Уровень"]
+        h2
+          = fa_icon "signal", text: @worker.level 
+      span.col-sm-6[title="Монеты"]
+        h2
+          = fa_icon "database", text: @worker.coins
 
   .col-sm-8
-    - if current_worker == @worker
-      = link_to "Редактировать информацию", edit_path(), class: "btn btn-primary"
 
   	h1 #{@worker.name}
-    p День рождения: #{l @worker.birth}
+    - if @worker.birth
+      p День рождения: #{l @worker.birth}
 
     p Отдел: #{@worker.department.name}
-    p Образование: #{@worker.education}
-  	p Контакты: #{@worker.contacts}
-  	p Увлечения: #{@worker.about}
+    - if @worker.education
+      p Образование: #{@worker.education}
+    - if @worker.contacts
+  	  p Контакты: #{@worker.contacts}
+    - if @worker.about
+  	  p Увлечения: #{@worker.about}

@@ -47,6 +47,8 @@ class Worker
   belongs_to :department
   has_many :actions, as: :action_object, dependent: :destroy
   field :coins, type: Integer, default: 0
+  field :xp, type: Integer, default: 0
+  field :xp_current, type: Integer, default: 0
   field :level, type: Integer, default: 0
 
   field :avatar, type: String
@@ -65,6 +67,19 @@ class Worker
 
   def get_thumb_avatar
     get_thumb_avatar = self.avatar? ? self.avatar.thumb : "ava_default.gif"
+  end
+
+  def xp_to_next_level
+    (self.level+1)*10
+  end
+
+  def raise_xp(coins)
+    self.xp += coins
+    self.xp_current += coins
+    if (self.xp_current >= self.xp_to_next_level)
+      self.xp_current -= self.xp_to_next_level
+      self.level += 1
+    end
   end
 
   def ensure_authentication_token

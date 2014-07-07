@@ -1,13 +1,15 @@
 .header
     ul.nav.nav-pills.pull-right
+
       - if admin_signed_in?
         li
           = link_to "Админка", control_index_path()
         li
           = link_to "Выйти", destroy_admin_session_path, :method => :delete
+          
       - if worker_signed_in?
         li
-          = link_to "Профиль", profile_path()
+          = link_to "Профиль", worker_path(current_worker)
         li
           = link_to "Выйти", destroy_worker_session_path, :method => :delete
       - unless worker_signed_in? || admin_signed_in?
