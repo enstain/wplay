@@ -5,16 +5,17 @@
       span.btn-group
         button.btn.btn-primary.dropdown-toggle[type="button" data-toggle="dropdown"]
           - if @department
-            span.drop-title #{@department.name}&nbsp;
+            span.drop-title #{@department.name}
           - else
-            span.drop-title всех сотрудников&nbsp;
+            span.drop-title всех сотрудников
+          |&nbsp;(#{@workers.count})&nbsp;
           span.caret
         ul.dropdown-menu[role="menu"]
           li 
-            = link_to "всех сотрудников", rating_path()
+            = link_to "всех сотрудников (#{Worker.all.count})", rating_path()
           - for dep in Department.all.order_by(name: 1)
 	        <li> 
-	          = link_to dep.name, rating_path(department: dep)
+	          = link_to "#{dep.name} (#{dep.workers.count})", rating_path(department: dep)
 	        </li>
             
 		  
