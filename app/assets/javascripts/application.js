@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.ru.js
+//= require moment
+//= require bootstrap-datetimepicker
+//= require moment/ru
+//= require locales/bootstrap-datetimepicker.ru.js
 //= require_tree .

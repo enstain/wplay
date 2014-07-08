@@ -46,6 +46,10 @@ class Worker
   field :name, type: String
   belongs_to :department
   has_many :actions, as: :action_object, dependent: :destroy
+
+  has_and_belongs_to_many :quests
+  has_many :assigned_quests, :foreign_key => 'worker_id', :class_name => "Quest"
+
   field :coins, type: Integer, default: 0
   field :xp, type: Integer, default: 0
   field :xp_current, type: Integer, default: 0

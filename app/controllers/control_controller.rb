@@ -39,5 +39,23 @@ class ControlController < ApplicationController
        redirect_to control_index_path()
     end
   end
+
+  def new_quest
+    @quest = Quest.new
+  end
+
+  def create_quest
+    params.permit!
+    @quest = Quest.create(params[:quest])
+    
+      if @quest.save
+        flash[:notice] = 'Квест добавлен'
+        Action.create(action_object: @quest, type: :new_quest)
+        redirect_to control_new_quest_path
+      else
+        flash[:error] = @worker.errors.full_messages.join("\n")
+        redirect_to control_new_quest_path
+      end
+  end
   
 end

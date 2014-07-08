@@ -17,4 +17,16 @@ module ApplicationHelper
 		"#{locale}"
 	end
 
+	def quest_limitation(date)
+		locale = case true
+			when Date.today.to_s == date.strftime("%Y-%m-%d")
+				Russian::strftime(date, "Сегодня в %H:%M")
+			when Date.tomorrow.to_s == date.strftime("%Y-%m-%d")
+				Russian::strftime(date, "Завтра в %H:%M")
+			else
+				Russian::strftime(date, "%d %B в %H:%M")
+			end
+		"#{locale}"
+	end
+
 end

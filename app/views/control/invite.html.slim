@@ -1,9 +1,4 @@
-- if flash[:notice]
-  .alert.alert-success[role="alert"]
-    = flash[:notice]
-- if flash[:error]
-  .alert.alert-danger[role="alert"]
-    = flash[:error]
+= render "partials/flash"
 
 - @pass = rndpass()
 

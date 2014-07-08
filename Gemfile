@@ -11,6 +11,8 @@ group :assets do
   gem 'jquery-ui-rails'
   gem 'font-awesome-rails'
   gem 'bootstrap-datepicker-rails'
+  gem 'momentjs-rails', '~> 2.5.0'
+  gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0.2'
   gem 'coffee-rails'
 end
 
