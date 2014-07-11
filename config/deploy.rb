@@ -46,8 +46,8 @@ set :user,            "hosting_enstain"
 set :login,           "enstain"
 set :use_sudo,        false
 set :deploy_to,       "/home/#{user}/projects/#{application}"
-# set :unicorn_conf,    "/etc/unicorn/#{application}.#{login}.rb"
-set :unicorn_conf,    "/home/#{user}/projects/#{application}/current/config/unicorn.rb"
+set :unicorn_conf,    "/etc/unicorn/#{application}.#{login}.rb"
+#set :unicorn_conf,    "/home/#{user}/projects/#{application}/current/config/unicorn.rb"
 set :unicorn_pid, "/var/run/unicorn/#{user}/#{application}.#{login}.pid"
 set :bundle_dir,      File.join(fetch(:shared_path), 'gems')
 role :web,            deploy_server
