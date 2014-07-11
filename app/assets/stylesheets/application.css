@@ -13,4 +13,5 @@
  *= require bootstrap-datepicker3
  *= require bootstrap-datetimepicker
  *= require_tree .
+ *= stub startup
  */

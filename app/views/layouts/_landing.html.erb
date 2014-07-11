@@ -1,0 +1,245 @@
+<%= stylesheet_link_tag 'startup'%>
+
+<div class="preloader"></div>
+ 
+<main id="top" class="masthead" role="main">
+<div class="container">
+ 
+<%= link_to 'Вход в систему', new_worker_session_path(), class: "btn btn-primary" %>
+
+<div class="logo"> <a href="#"><img src="assets/landing/logo-landing.png" alt="startup-logo"></a> </div>
+ 
+<h1>Заставьте ваш бизнес сыграть по-крупному</h1>
+ 
+<div class="row">
+<div class="col-sm-12 subscribe">
+<%= form_tag({controller: "subscribe", action: "new"}, method: "post", class: "form-horizontal", id: "subscribeForm", remote: true) do %>
+	<div class="form-group">
+		<div class="col-md-6 col-sm-6 col-sm-offset-1 col-md-offset-0">
+			<%= email_field(:user, :address, class: "form-control input-lg", id: "address", placeholder: "Оставьте свой email", required: true) %>
+		</div>
+	<div class="col-md-6 col-sm-4">
+		<%= submit_tag "ПОПРОБОВАТЬ БЕСПЛАТНО", class: "btn btn-success btn-lg" %>
+	</div>
+	</div>
+<% end %>
+<span id="result_subscribe" class="alertMsg"></span> </div>
+</div>
+ 
+ 
+<a href="#explore" class="scrollto">
+<p>УЗНАЙТЕ БОЛЬШЕ</p>
+<p class="scrollto--arrow">
+	<%= fa_icon "angle-double-down 2x" %>
+</p>
+</a>
+ 
+</div>
+</main>
+ 
+ 
+<div class="container" id="explore">
+ 
+<div class="section-title">
+<h2>Вы в поиске инструмента мотивации своих сотрудников?</h2>
+<h4>Геймификация бизнеса &ndash; наше решение проблемы</h4>
+</div>
+<section class="row heroimg breath">
+<div class="col-md-12 text-center"> <img src="assets/landing/workers-generation-y.png" alt="Поколение Y"></div>
+</section>
+ 
+ 
+<div class="section-title">
+<h2>Поколение Y:<br/> головная боль работодателя</h2>
+<h4>Сотрудники нового поколения Y молоды, амбициозны и мобильны.<br/> Их сложно удержать на рабочем месте, а повседневная рутина &ndash; это то, от чего они мечтают избавиться навсегда.</h4><h4> Work&amp;Play находит общий язык с поколением сотрудников, которых не устраивают старые правила ведения бизнеса.</h4>
+</div>
+<section class="row features">
+ 
+<div class="col-sm-6">
+	<div class="panel panel-default panel-inverse">
+	  <div class="panel-body">
+		<h3>Соблюдение рабочих стандартов</h3>
+		<p>Теперь ежедневная рутина &ndash; это увлекательный игровой процесс. Сотрудник зарабатывает монеты и повышает свой рейтинг за счёт выполнения заданий и получения наград, всё как в популярных играх а-ля World of Warcraft.</p><p><strong> Дайте сотруднику квест приходить вовремя, и он больше никогда не будет опаздывать на работу.</strong></p>
+	  </div>
+	</div>
+</div>
+
+<div class="col-sm-6">
+	<div class="panel panel-default panel-inverse">
+	  <div class="panel-body">
+	    <h3>Ориентация на сотрудника</h3>
+		<p>В системе Work&amp;Play каждый сотрудник компании видит свой собственный прогресс. Он как бы перестаёт работать на компанию, и начинает работать на себя.</p><p> А вместе с растущими показателями сотрудника растут и показатели компании в целом.</p>
+	  </div>
+	</div>
+</div>
+
+<!-- -->
+<div class="col-sm-12" style="margin-bottom: 20px;">
+	<div class="col-md-12 text-center"> <img src="assets/landing/IsoOffice.jpg" alt="Офис" class="img"></div>
+</div>
+
+
+<div class="col-sm-6">
+	<div class="panel panel-default panel-inverse">
+	  <div class="panel-body">
+		<h3>Социальная сеть сотрудников</h3>
+		<p>У вас больше не возникнет вопроса, надо ли блокировать социальные сети на рабочем месте сотрудника &ndash; они ему больше не понадобятся. Work&amp;Play предоставляет сервис для социальной коммуникации внутри компании.</p><p> Всё как в фейсбуке: лента новостей, лайки и комментарии, но уже по делу и для дела.</p>
+	</div>
+	</div>
+</div>
+
+<div class="col-sm-6">
+	<div class="panel panel-default panel-inverse">
+	  <div class="panel-body">
+		<h3>&laquo;Работай, играй и зарабатывай&raquo;</h3>
+		<p>Мы рекоммендуем использовать материальный фонд для мотивации сотрудников. Игровая валюта предполагает конвертацию в реальные материальные поощрения. Сотрудник зарабатывает монеты внутри Work&amp;Play, чтобы затем обменять их в &laquo;магазине&raquo; на ряд ценных вещей (iPad, обед с боссом, BMW х5).</p>
+	</div>
+	</div>
+</div>
+
+</section>
+ 
+<!-- 
+<div class="section-title">
+<h2>You are in a good company</h2>
+<h4>We are funded with world's trusted brands. </h4>
+</div>
+<section class="row clientlogo breath">
+<div class="col-md-12 text-center"> <img src="images/client-logos.png" alt="client-logos"></div>
+</section>
+ -->
+
+</div>
+ 
+ 
+<div class="highlight testimonials">
+<div class="container">
+ 
+<div class="section-title">
+<h2>Главная идея в том, что каждое положительное действие сотрудника приводит к награде, он сравнивает свои результаты с результатами коллег и, в итоге, погружается в состояние потока.</h2>
+<h4>И теперь, независимо от того, кто он &ndash; продавец, оператор колл-центра, дизайнер или менеджер &ndash; он лоялен, мотивирован и настроен на работу в команде.</h4>
+</div>
+ <!--
+<section class="row breath">
+<div class="col-md-6">
+<div class="testblock"></div>
+<div class="clientblock"> <img src="images/customer-img-1.jpg" alt=".">
+<p><strong>Johnathan Doe</strong> <br>
+Founder and CEO of <a href="#">Square Inc</a></p>
+</div>
+</div>
+<div class="col-md-6">
+<div class="testblock">I like this template very much. easy customization and perfect support. This is the finest startup template I've ever seen. Its minimal, Flat and responsive too. I'm really happy with their service.</div>
+<div class="clientblock"> <img src="images/customer-img-2.jpg" alt=".">
+<p><strong>Michael Slats</strong> <br>
+Project Lead at <a href="#">Airbnb.com</a></p>
+</div>
+</div>
+</section>
+ -->
+
+</div>
+</div>
+ 
+ 
+<div class="container">
+ 
+ <!-- 
+<div class="section-title">
+<h2>Honest pricing. No surprises.</h2>
+<h4>No contract. No risk. No credit card required. </h4>
+</div>
+<section class="row breath planpricing">
+<div class="col-md-4">
+<div class="pricing color1">
+<div class="planname">Personal</div>
+<div class="price"> <span class="curr">$</span>14<span class="per">/MO</span></div>
+<div class="billing">Billed Annually</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="pricing color2">
+<div class="planname">Agency</div>
+<div class="price"> <span class="curr">$</span>49<span class="per">/MO</span></div>
+<div class="billing">Billed Annually</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="pricing color3">
+<div class="planname">Enterprise</div>
+<div class="price"> <span class="curr">$</span>99<span class="per">/MO</span></div>
+<div class="billing">Billed Annually</div>
+</div>
+</div>
+</section>
+-->
+ 
+ 
+<div class="section-title">
+<h2>Возможно, вас это интересует</h2>
+<h4>Наши ответы на ваши вопросы о сервисе Work&amp;Play</h4>
+</div>
+
+<section class="row faq breath">
+<div class="col-md-6">
+<h6><%= fa_icon "quote-left 3x", class: "pull-left" %>Я могу попробовать воспользоваться вашим сервисом бесплатно?</h6>
+<p>Да. Мы приглашаем любые компании малого и среднего бизнеса протестировать наш сервис. Никаких обязательств на срок пробного использования. Затем вы сможете выбрать для себя наиболее оптимальный тариф для дальнейшего использования Work&amp;Play.</p>
+
+<h6><%= fa_icon "quote-left 3x", class: "pull-left" %>Как определить, подходит ли Work&amp;Play для моей компании?</h6>
+<p>Мы предполагаем, что Work&amp;Play можно использовать для мотивации любой команды сотрудников, будь то автомойка или редакция журнала. Признаки того, что вам подходит Work&amp;Play: у вас есть группа людей, выполняющих некоторые функции в команде, и у команды есть общая цель.</p>
+</div>
+
+<div class="col-md-6">
+<h6><%= fa_icon "quote-left 3x", class: "pull-left" %>Кто в моей компании будет управлять процессом использования Work&amp;Play?</h6>
+<p>Не волнуйтесь. Мы догадываемся, что у вас ещё нет менеджера по персоналу, который вдобавок знает, как обращаться с Work&amp;Play. Поэтому предлагаем услуги по оффлайн поддержке нашего продукта в вашей компании. Это тренинги персонала по использованию Work&amp;Play, обучение менеджеров, техническое и общее консультационное сопровождение.</p>
+
+<!--
+<h6>What payment types do you accept?</h6>
+<p>We accept payments from MasterCard, Visa, Visa Debit and American Express. We do not accept PayPal. Remember, you do not need to supply card details to start your free trial.</p>
+-->
+</div>
+</section>
+ 
+</div>
+ 
+ 
+<main class="footercta" role="main">
+<div class="container">
+ 
+<h1>Если вы хотите принять участие в тестировании и применить игровые механики в своей компании, напишите нам. Это бесплатно :)</h1>
+ 
+<div class="row">
+<div class="col-md-12 breath text-center"> <a href="#top" class="btn btn-success btn-lg gototop">ПОПРОБОВАТЬ БЕСПЛАТНО</a> </div>
+</div>
+</div>
+</main>
+ 
+ 
+<div class="container">
+<section class="row breath">
+<div class="col-md-12 footerlinks"> 
+
+	<script type="text/javascript" src="http://spark.ru/public/js/widget.js"></script><div id="glWidget" name="glWidget" data-key="870698"></div>
+	<a href="http://spark.ru/startup/53b5394570cd8">Следите за нами на тусовке стартапов SPARK</a> 
+	<%= link_to 'Уже зарегистрированы на Work&Play?', new_worker_session_path() %>
+<p>&copy; 2014 Work&amp;Play</p>
+</div>
+</section>
+ 
+</div>
+
+ 
+ 
+<script>
+
+ $(function() {
+    $('.scrollto, .gototop').bind('click',function(event){
+		 var $anchor = $(this);
+		 $('html, body').stop().animate({
+         scrollTop: $($anchor.attr('href')).offset().top
+          }, 1500,'easeInOutExpo');
+     event.preventDefault();
+      });
+  });
+        
+</script>

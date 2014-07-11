@@ -55,3 +55,5 @@ gem 'rails_admin_settings'
 gem "devise"
 gem 'unicorn'
 gem 'capistrano'
+
+gem 'subdomain-fu', :git => "git://github.com/nhowell/subdomain-fu.git"

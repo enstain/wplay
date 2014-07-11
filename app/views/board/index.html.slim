@@ -7,5 +7,6 @@
 
 .row.marketing
   .col-lg-12
+    = current_subdomain
     - for action in @actions
       = render "board/action", action: action

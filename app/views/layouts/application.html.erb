@@ -2,13 +2,16 @@
 <html>
 <head>
   <title>Work &amp; Play</title>
+  <%= favicon_link_tag %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-	<div class="container">
+  <% if current_subdomain || (devise_controller?) %>
+
+  	<div class="container"> <!-- container -->
 
 	  <%= render 'layouts/header' %>
       <%= yield %>
@@ -18,6 +21,10 @@
       </div>
 
     </div> <!-- /container -->
+
+  <% else %> <!-- /else landing -->
+    <%= render 'layouts/landing' %>
+  <% end %>
 
 </body>
 </html>

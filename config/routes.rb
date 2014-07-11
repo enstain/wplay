@@ -1,5 +1,6 @@
 Wplay::Application.routes.draw do
  
+  get "subscribe/new"
   get "quests/show"
   get "actions/add"
   get "workers/show"
@@ -24,6 +25,8 @@ Wplay::Application.routes.draw do
 
   resources :workers
   resources :quests
+
+  post "subscribe/new"
 
   root to: "board#index"
 end
