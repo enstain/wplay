@@ -1,11 +1,11 @@
 <%- if controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Я администратор", new_admin_session_path() %><br />
+  <%= link_to "Я администратор", new_admin_session_path(subdomain: current_subdomain) %><br />
 <% end -%> 
 
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Войти", new_session_path(resource_name) %><br />
+  <%= link_to "Войти", new_session_path(resource_name, subdomain: current_subdomain) %><br />
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Забыли пароль?", new_password_path(resource_name) %><br />
+  <%= link_to "Забыли пароль?", new_password_path(resource_name, subdomain: current_subdomain) %><br />
 <% end -%>

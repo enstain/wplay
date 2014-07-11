@@ -6,6 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-if Admin.any_in(email: ['aaa@com.ru']).empty?
-	Admin.create!(email: 'aaa@com.ru', password: 'qwertyui', password_confirmation: 'qwertyui')
+if God.any_in(email: ['god@workplay.in']).empty?
+	God.create!(email: 'god@workplay.in', password: 'kRdR1BLDrZ', password_confirmation: 'kRdR1BLDrZ')
 end

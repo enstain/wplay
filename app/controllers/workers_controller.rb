@@ -4,7 +4,7 @@ class WorkersController < ApplicationController
   before_action :authenticate_worker!, only: [:profile, :edit, :update]
 
   def show
-  	@worker = Worker.find(params[:id])
+  	@worker = Worker.company(current_company).find(params[:id])
 
     #if worker_signed_in?
     #  redirect_to profile_path if current_worker == @worker
@@ -17,12 +17,12 @@ class WorkersController < ApplicationController
   #end
 
   def edit
-    @worker = Worker.find(current_worker)
+    @worker = Worker.company(current_company).find(current_worker)
   end
 
   def update
     params.permit!
-    @worker = Worker.find(current_worker)
+    @worker = Worker.company(current_company).find(current_worker)
 
     respond_to do |format|
       if @worker.update_attributes(params[:worker])
@@ -36,7 +36,7 @@ class WorkersController < ApplicationController
 
   def sign_in_token
   	user_token = params[:user_token].presence
-    worker       = user_token && Worker.find_by(authentication_token: user_token.to_s)
+    worker       = user_token && Worker.company(current_company).find_by(authentication_token: user_token.to_s)
  
     if (worker && (Time.now - worker.c_at).to_i > 0)
       sign_out(current_admin) if admin_signed_in?

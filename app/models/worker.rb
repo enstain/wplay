@@ -3,8 +3,9 @@ class Worker
   include Mongoid::Timestamps::Short
   include Mongoid::MultiParameterAttributes
 
-  after_create :mail_create
   before_save :ensure_authentication_token
+
+  belongs_to :company
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -65,6 +66,8 @@ class Worker
 
   field :authentication_token, type: String
 
+  scope :company, ->(company) { where(company: company) }
+
   def get_avatar
     get_avatar = self.avatar? ? self.avatar : "ava_default.gif"
   end
@@ -90,10 +93,6 @@ class Worker
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
     end
-  end
-
-  def mail_create
-    ContactMailer.welcome_email(self).deliver
   end
 
   private

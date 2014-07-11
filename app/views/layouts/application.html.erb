@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <% if current_subdomain || (devise_controller?) %>
+  <% if current_subdomain || (devise_controller?) || (@im_at_login_page) %>
 
   	<div class="container"> <!-- container -->
 

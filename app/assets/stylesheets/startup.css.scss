@@ -498,6 +498,12 @@ to {
 
 /*MEDIA QUERIES*/
 
+@media (max-width: 1400px) {
+	.logo {
+		padding: 20px 0 20px;
+	}
+}
+
 @media (max-width: 991px) {
  h1 {
 font-size: 35px;
@@ -536,8 +542,12 @@ padding: 40px 15px;
  @media (max-width: 480px) {
 	 /*Media Queries for smaller devices*/
 	 .masthead {
-	background-attachment: scroll;
-}
+		background-attachment: scroll;
+	}
+
+	.logo {
+		padding: 20px 0 60px;
+	}
 
 }
 

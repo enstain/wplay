@@ -6,11 +6,14 @@ class Action
   include Rails.application.routes.url_helpers
 
   belongs_to :action_object, polymorphic: true
+  belongs_to :company
   
   field :type
   enumerize :type, in: [:plain_action, :new_user, :user_get_coins, :new_quest], default: :plain_action
 
   field :tie, type: String, default: ""
+
+  scope :company, ->(company) { where(company: company) }
 
   def get_content
   	@link = ActionController::Base.helpers.link_to self.action_object.name, polymorphic_path(self.action_object)

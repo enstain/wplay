@@ -1,13 +1,14 @@
 Wplay::Application.routes.draw do
  
-  get "subscribe/new"
-  get "quests/show"
-  get "actions/add"
-  get "workers/show"
-  devise_for :workers
+  devise_for :gods
   devise_for :admins
+  devise_for :workers
 
   mount RailsAdmin::Engine => '/adminka', as: 'rails_admin'
+
+  #get "quests/show"
+  #get "actions/add"
+  #get "workers/show"
 
   match "/control", to: "control#index", as: "control_index", via: :get
   get "control/invite"
@@ -18,15 +19,14 @@ Wplay::Application.routes.draw do
   
   get "/workers/sign_in_token", to: "workers#sign_in_token", as: "sign_in_token", via: :get
   get "/workers/test_sign_in", to: "workers#test_sign_in", as: "test_sign_in", via: :get
-  #get "/workers/:id", to: "workers#profile", as: "profile"
   get "/rating", to: "board#rating", as: "rating"
   get "/profile/edit", to: "workers#edit", as: "edit"
   patch "/profile/update", to: "workers#update", as: "update"
 
+  get "/login", to: "board#login", as: "custom_login"
+
   resources :workers
   resources :quests
-
-  post "subscribe/new"
 
   root to: "board#index"
 end

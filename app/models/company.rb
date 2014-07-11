@@ -1,6 +1,9 @@
 class Company
   include Mongoid::Document
 
+  validates :name, presence: true, uniqueness: true
+  validates :subdomain, presence: true, uniqueness: true
+
   field :name, type: String
   field :subdomain, type: String
 

@@ -5,11 +5,19 @@ class ContactMailer < ActionMailer::Base
 
   def welcome_email(worker)
     @worker = worker
-    mail(
-        to: @worker.email, 
-        from: ActionMailer::Base.smtp_settings[:user_name],
-        subject: '[WORKPLAY.IN] Добро пожаловать на сайт'
-    )
+    if Rails.env.production?
+	    mail(
+	        to: @worker.email, 
+	        from: ActionMailer::Base.smtp_settings[:user_name],
+	        subject: '[WORKPLAY.IN] Добро пожаловать на сайт'
+	    )
+	else
+		mail(
+	        to: @worker.email, 
+	        from: "hello@workplay.in",
+	        subject: '[WORKPLAY.IN] Добро пожаловать на сайт'
+	    )
+	end
   end
 
 end

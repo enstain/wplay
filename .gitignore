@@ -21,6 +21,7 @@
 
 /db/*.javadb/
 /db/*.sqlite3
+/db/seeds.rb
 /doc/api/
 /doc/app/
 /doc/features.html
