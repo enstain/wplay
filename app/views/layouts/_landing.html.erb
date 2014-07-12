@@ -5,25 +5,20 @@
 <main id="top" class="masthead" role="main">
 <div class="container">
  
-<%= link_to 'Вход в систему', custom_login_path(), class: "btn btn-primary" %>
-
 <div class="logo"> <a href="#"><img src="assets/landing/logo-landing.png" alt="startup-logo"></a> </div>
  
 <h1>Заставьте ваш бизнес сыграть по-крупному</h1>
  
 <div class="row">
 <div class="col-sm-12 subscribe">
-<%= form_tag({controller: "subscribe", action: "new"}, method: "post", class: "form-horizontal", id: "subscribeForm", remote: true) do %>
-	<div class="form-group">
-		<div class="col-md-6 col-sm-6 col-sm-offset-1 col-md-offset-0">
-			<%= email_field(:user, :address, class: "form-control input-lg", id: "address", placeholder: "Оставьте свой email", required: true) %>
-		</div>
-	<div class="col-md-6 col-sm-4">
-		<%= submit_tag "ПОПРОБОВАТЬ БЕСПЛАТНО", class: "btn btn-success btn-lg" %>
+	<div class="col-sm-6">
+		<%= link_to 'ВХОД В СИСТЕМУ', custom_login_path(), class: "btn btn-primary btn-block btn-lg" %>
+	</div>
+	<div class="col-sm-6">
+		<%= link_to 'БЕСПЛАТНАЯ РЕГИСТРАЦИЯ', custom_register_path(), class: "btn btn-success btn-block btn-lg" %>
 	</div>
 	</div>
-<% end %>
-<span id="result_subscribe" class="alertMsg"></span> </div>
+</div>
 </div>
  
  

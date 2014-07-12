@@ -1,0 +1,16 @@
+= render "partials/flash"
+
+= simple_form_for @company, url: done_register_path() do |f|
+  h4 Введите данные о вашей компании
+  = f.input :name, label: "Название компании", required: true
+  = f.input :subdomain, label: "Субдомен на котором будет размещен подсайт вашей компании. Например, для подсайта company.workplay.in субдоменом является company. В названии субдомена можно использовать только буквы латинского алфавита, цифры, дефис и нижнее подчёркивание!", required: true
+  .alert.alert-warning[role="alert"]
+    = fa_icon "exclamation-triangle 4x", class: "pull-left"
+    h4 Обращаем ваше внимание на то, что регистрация субдомена займёт некоторое время. В дальнейшем имя подсайта компании будет сложно изменить, поэтому сразу подберите наиболее удачное имя для подсайта.
+  hr
+  h4 Введите данные администратора, который будет управлять подсайтом вашей компании
+  = f.fields_for :admins do |u|
+    = u.input :email, required: true
+    = u.input :password, required: true
+    = u.input :password_confirmation, required: true
+  = f.button :submit

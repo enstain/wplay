@@ -24,6 +24,8 @@ Wplay::Application.routes.draw do
   patch "/profile/update", to: "workers#update", as: "update"
 
   get "/login", to: "board#login", as: "custom_login"
+  get "/register", to: "board#register", as: "custom_register"
+  post "/registered", to: "board#registered", as: "done_register"
 
   resources :workers
   resources :quests

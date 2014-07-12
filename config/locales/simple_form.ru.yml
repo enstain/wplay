@@ -14,6 +14,7 @@ ru:
     labels:
       defaults:
         password: 'Пароль'
+        password_confirmation: 'Повторите пароль'
       user:
         new:
           email: 'E-mail для входа'
@@ -22,5 +23,5 @@ ru:
     hints:
       defaults:
         username: 'Логин'
-        password: 'Не используйте специальные символы в пароле'
+        #password: 'Не используйте специальные символы в пароле'
 
