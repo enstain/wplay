@@ -204,7 +204,9 @@ Project Lead at <a href="#">Airbnb.com</a></p>
 <h1>Если вы хотите принять участие в тестировании и применить игровые механики в своей компании, напишите нам. Это бесплатно :)</h1>
  
 <div class="row">
-<div class="col-md-12 breath text-center"> <a href="#top" class="btn btn-success btn-lg gototop">ПОПРОБОВАТЬ БЕСПЛАТНО</a> </div>
+<div class="col-md-12 breath text-center"> 
+	<%= link_to 'ПОПРОБОВАТЬ БЕСПЛАТНО', custom_register_path(), class: "btn btn-success btn-lg gototop" %>
+</div>
 </div>
 </div>
 </main>
@@ -216,7 +218,7 @@ Project Lead at <a href="#">Airbnb.com</a></p>
 
 	<script type="text/javascript" src="http://spark.ru/public/js/widget.js"></script><div id="glWidget" name="glWidget" data-key="870698"></div>
 	<a href="http://spark.ru/startup/53b5394570cd8">Следите за нами на тусовке стартапов SPARK</a> 
-	<%= link_to 'Уже зарегистрированы на Work&Play?', new_worker_session_path() %>
+	<%= link_to 'Уже зарегистрированы на Work&Play?', custom_login_path() %>
 <p>&copy; 2014 Work&amp;Play</p>
 </div>
 </section>
