@@ -11,6 +11,10 @@ ru:
         all: Всем
         department: Отделу
         person: Сотрудникам
+    worker:
+      sex:
+        male: Мужской
+        female: Женский
 
   date:
     datepicker:

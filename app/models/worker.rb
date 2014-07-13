@@ -2,6 +2,7 @@ class Worker
   include Mongoid::Document
   include Mongoid::Timestamps::Short
   include Mongoid::MultiParameterAttributes
+  extend Enumerize
 
   before_save :ensure_authentication_token
 
@@ -58,6 +59,9 @@ class Worker
 
   field :avatar, type: String
   mount_uploader :avatar, AvatarUploader
+
+  field :sex, type: String
+  enumerize :sex, in: [:male, :female], default: :male
 
   field :birth, type: Date
   field :contacts, type: String

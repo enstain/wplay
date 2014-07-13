@@ -17,8 +17,8 @@ class ContactMailer < ActionMailer::Base
   def welcome_company_email(admin)
   	@admin = admin
   	@company = @admin.company
-	mail(
-        to: @admin.email, 
+	  mail(
+        to: "#{@admin.email};support@workplay.in", 
         subject: '[WORKPLAY.IN] Добро пожаловать на сайт'
     )
   end
