@@ -6,15 +6,13 @@ class WorkersController < ApplicationController
   def show
   	@worker = Worker.company(current_company).find(params[:id])
 
+    @myprofile = true if current_worker == @worker
+    @actions = @worker.actions.order_by(c_at: -1).limit(5)
+
     #if worker_signed_in?
     #  redirect_to profile_path if current_worker == @worker
     #end
   end
-
-  #def profile
-  #	@worker = Worker.find(current_worker)
-  #	render "show"
-  #end
 
   def edit
     @worker = Worker.company(current_company).find(current_worker)

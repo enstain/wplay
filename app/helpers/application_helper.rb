@@ -29,4 +29,19 @@ module ApplicationHelper
 		"#{locale}"
 	end
 
+	def quest_for(quest)
+		@names = Array.new
+		case quest.target
+		  when "all"
+		  	@tie = "для всех"
+		  when "department"
+		  	quest.departments.each do |dep| @names << dep.name end
+		  	@tie = (@names.count > 1) ? "для отделов: #{@names.join(", ")}" : "для отдела: #{@names}"
+		  when "person"
+		  	quest.workers.each do |worker| @names << worker.name end
+		  	@tie = (@names.count > 1) ? "для сотрудников: #{@names.join(", ")}" : "для сотрудника: #{@names}"
+		  end
+		@tie
+	end
+
 end

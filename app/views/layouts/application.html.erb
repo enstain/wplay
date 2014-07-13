@@ -12,14 +12,20 @@
   <% if current_subdomain || (devise_controller?) || (@im_at_login_page) %>
 
   	<div class="container"> <!-- container -->
+      <%= render 'layouts/header' %>
+      <div class="row"> <!-- row -->
 
-	  <%= render 'layouts/header' %>
-      <%= yield %>
+        <div class="col-sm-3 sidebar-div">
+          <%= render 'layouts/sidebar' %>
+        </div>
 
+        <div class="col-sm-9">
+          <%= yield %>
+        </div>
+      </div> <!-- /row -->
       <div class="footer">
-        <p>&copy; 2014 WORK &amp; PLAY</p>
-      </div>
-
+          <p>&copy; 2014 WORK &amp; PLAY</p>
+        </div>
     </div> <!-- /container -->
 
   <% else %> <!-- /else landing -->

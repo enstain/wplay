@@ -1,23 +1,3 @@
 .header
-    - if current_subdomain
-      ul.nav.nav-pills.pull-right
-        - if admin_signed_in? || worker_signed_in?
-          li
-            = link_to "Рейтинг", rating_path()
-
-        - if admin_signed_in?
-          li
-            = link_to "Админка", control_index_path()
-          li
-            = link_to "Выйти", destroy_admin_session_path, :method => :delete
-            
-        - if worker_signed_in?
-          li
-            = link_to "Профиль", worker_path(current_worker)
-          li
-            = link_to "Выйти", destroy_worker_session_path, :method => :delete
-        - unless worker_signed_in? || admin_signed_in?
-          li
-            = link_to "Test sign in", test_sign_in_path() if Rails.env.development?
-    h3.text-muted 
-      = link_to "Work & Play", root_path()
+  h3.text-muted 
+    = link_to "Work & Play", root_path()

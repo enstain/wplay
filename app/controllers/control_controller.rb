@@ -53,7 +53,7 @@ class ControlController < ApplicationController
     
       if @quest.save
         flash[:notice] = 'Квест добавлен'
-        Action.create(action_object: @quest, type: :new_quest, company: current_company)
+        Action.create(action_object: @quest, type: :new_quest, company: current_company, tie: ApplicationController.helpers.quest_for(@quest))
         redirect_to control_new_quest_path
       else
         flash[:error] = @worker.errors.full_messages.join("\n")

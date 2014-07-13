@@ -1,0 +1,15 @@
+.worker-profile-mini.panel.clearfix
+  = link_to worker_path(current_worker) do
+    = image_tag(current_worker.get_thumb_avatar, size:"50x50", class: "avatar")
+    h4.name #{current_worker.name}
+  span.label.label-success
+    = fa_icon "signal", text: "#{current_worker.level}", title: "Уровень"
+  |&nbsp;
+  span.label.label-success
+    |#{current_worker.xp_current} / #{current_worker.xp_to_next_level}
+  |&nbsp;
+  span.label.label-warning
+    = fa_icon "database", text: current_worker.coins, title: "Монеты"
+  |&nbsp;
+  span.label.label-primary
+    = fa_icon "star", text: "#{current_worker.place_in_rating} (#{current_worker.company.workers.count})", title: "Место в рейтинге"

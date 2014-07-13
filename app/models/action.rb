@@ -23,7 +23,7 @@ class Action
 	  	when "user_get_coins"
 	  	  "Сотрудник #{@link} получил #{self.tie}"
       when "new_quest"
-        "Добавлен новый квест #{@link}"
+        "Добавлен новый квест #{@link} #{self.tie}"
 	  	else
 	  	  "Новое событие на сайте"
 	  	end

@@ -1,0 +1,10 @@
+.panel.panel-default
+  .panel-heading
+    h3.panel-title #{action_date(quest.c_at)}
+  .panel-body
+    .media
+	  /a.pull-left[href=polymorphic_path(action.action_object)]
+	    = image_tag(action.action_object.get_thumb_avatar, class: "media-object", size: "40x40")
+	  .media-body
+	    h4.media-heading #{quest.name}
+	    == quest.description

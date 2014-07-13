@@ -8,7 +8,6 @@ class BoardController < ApplicationController
 
   def login
     @im_at_login_page = true
-    
   end
 
   def register

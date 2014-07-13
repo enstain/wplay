@@ -9,6 +9,17 @@
 	margin-bottom: 20px;
 }
 
+.worker-profile-mini {
+  .avatar {
+    float: left;
+    margin-right: 20px;
+  }
+
+  .name {
+    margin-top: 0;
+  }
+}
+
 .progress {
   position: relative;
   height: 30px;
@@ -25,4 +36,20 @@
     width: 100%;
     color: black;
     color: #333;
+}
+
+.worker-status-badge {
+  text-align: center;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  hr {
+    margin: 0;
+  }
 }

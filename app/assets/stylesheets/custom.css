@@ -4,6 +4,14 @@ body {
   padding-bottom: 20px;
 }
 
+h1, .h1, h2, .h2, h3, .h3 {
+  margin-top: 0px;
+}
+
+.sidebar-div {
+  border-right: 1px solid #eee;
+}
+
 .img-responsive {
   width: 100%;
 }
@@ -19,6 +27,7 @@ body {
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 20px;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -36,12 +45,13 @@ body {
   border-top: 1px solid #e5e5e5;
 }
 
-/* Customize container */
+/* Customize container 
 @media (min-width: 768px) {
   .container {
     max-width: 730px;
   }
 }
+*/
 .container-narrow > hr {
   margin: 30px 0;
 }
@@ -56,14 +66,14 @@ body {
   font-size: 21px;
 }
 
-/* Supporting marketing content */
+/* Supporting marketing content 
 .marketing {
   margin: 40px 0;
 }
 .marketing p + h4 {
   margin-top: 28px;
 }
-
+*/
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
@@ -80,5 +90,29 @@ body {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+  }
+  .affix,.affix-top {
+      position:fixed;
+  }
+}
+
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 }

@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
       if current_company == nil
         redirect_to root_path(subdomain: false)
       else
-        unless worker_signed_in? || admin_signed_in? || devise_controller?
+        unless worker_signed_in? || admin_signed_in? || devise_controller? || request.path == "/workers/test_sign_in"
           redirect_to new_worker_session_path(subdomain: current_subdomain)
         end
       end

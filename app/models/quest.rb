@@ -4,6 +4,7 @@ class Quest
   extend Enumerize
 
   belongs_to :company
+  has_many :actions, as: :action_object, dependent: :destroy
 
   field :name, type: String
   
@@ -24,8 +25,10 @@ class Quest
   field :iterates, type: Integer, default: 1
 
   scope :company, ->(company) { where(company: company) }
+  scope :for_all, ->() { where(target: :all) }
 
   def get_thumb_avatar
     get_thumb_avatar = false ? self.avatar.thumb : "ava_default.gif"
   end
+
 end

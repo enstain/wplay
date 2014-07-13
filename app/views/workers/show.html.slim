@@ -9,25 +9,29 @@
   .col-sm-4
     = image_tag(@worker.get_avatar, class: "img-responsive avatar")
 
-    - if current_worker == @worker
-      = link_to "Редактировать анкету", edit_path(), class: "btn btn-primary btn-block"
-    
-    hr
-
-    /- if current_worker == @worker
     .progress
       .progress-bar.progress-bar-success[role="progressbar" aria-valuenow=@worker.xp_current aria-valuemin="0" aria-valuemax=@worker.xp_to_next_level style="width: #{@worker.xp_current*100/@worker.xp_to_next_level}%;"] 
         span #{@worker.xp_current} (#{@worker.xp_to_next_level})
 
     .row
-      span.col-sm-6[title="Уровень"]
-        h2
-          = fa_icon "signal", text: @worker.level 
-      span.col-sm-6[title="Монеты"]
-        h2
-          = fa_icon "database", text: @worker.coins
-
-    = link_to "Рейтинг сотрудников", rating_path()
+      span.col-md-6.col-sm-12[title="Уровень"]
+        .panel.panel-default.worker-status-badge
+          .panel-body
+            h3 #{@worker.level}
+            hr
+            p уровень
+      span.col-md-6.col-sm-12[title="Монеты"]
+        .panel.panel-default.worker-status-badge
+          .panel-body
+            h3 #{@worker.coins}
+            hr
+            p монеты
+      span.col-sm-12[title="Монеты"]
+        .panel.panel-default.worker-status-badge
+          .panel-body
+            h3 #{@worker.place_in_rating} из #{@worker.company.workers.count}
+            hr
+            p место в рейтинге
 
   .col-sm-8
 
@@ -42,3 +46,8 @@
   	  p Контакты: #{@worker.contacts}
     - if @worker.about
   	  p Увлечения: #{@worker.about}
+
+    hr
+    h4 Последние события
+    - for action in @actions
+      = render "board/action", action: action

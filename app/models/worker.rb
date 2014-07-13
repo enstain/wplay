@@ -84,6 +84,11 @@ class Worker
     (self.level+1)*10
   end
 
+  def place_in_rating
+    @workers = Worker.company(self.company).all.order_by(xp: -1).to_a
+    @workers.index(self) + 1
+  end
+
   def raise_xp(coins)
     self.xp += coins
     self.xp_current += coins
@@ -97,6 +102,17 @@ class Worker
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
     end
+  end
+
+  def legale_quests
+    @quests_for_all = Quest.company(self.company).for_all.all.to_a
+    @quests_for_my_department = self.department.quests.all.to_a
+    @quests_for_me = self.quests.all.to_a
+    return @quests_for_all + @quests_for_my_department + @quests_for_me
+  end
+
+  def in_legale_quests(quest)
+    self.legale_quests.include?(quest)
   end
 
   private
