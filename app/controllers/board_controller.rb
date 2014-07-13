@@ -25,7 +25,7 @@ class BoardController < ApplicationController
 
       if @company.save
         @admin = @company.admins.first
-        ContactMailer.welcome_company_email(@admin).deliver!
+        ContactMailer.welcome_company_email(@admin).deliver
         redirect_to custom_login_path(subdomain: false)
       else
         flash.now[:error] = "При регистрации возникли следующие ошибки (проверьте примечания у полей, выделенных красным):"

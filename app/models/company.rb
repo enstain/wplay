@@ -1,6 +1,8 @@
 class Company
   include Mongoid::Document
 
+  before_save :downme
+
   validates :name, presence: true, uniqueness: true
   validates :subdomain, presence: true, uniqueness: true
 
@@ -11,7 +13,8 @@ class Company
   validates :subdomain, :presence => true, 
                     :length => {:minimum => 2, :maximum => 20},
                     :uniqueness => true,
-                    :format => {:with => /[a-z-_0-9]/i}
+                    :format => {:with => /\A[a-z0-9\-\_]+[^\s]+\z/i}
+
 
   field :name, type: String
   field :subdomain, type: String
@@ -23,4 +26,9 @@ class Company
   has_many :quests, dependent: :destroy
 
   accepts_nested_attributes_for :admins
+
+  private 
+  def downme
+    self.subdomain.downcase!
+  end
 end
