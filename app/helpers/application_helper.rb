@@ -29,6 +29,10 @@ module ApplicationHelper
 		"#{locale}"
 	end
 
+	def quest_endtime(quest)
+		quest.limitation? ? (quest_limitation(quest.limitation)) : "бессрочно"
+	end
+
 	def quest_for(quest)
 		@names = Array.new
 		case quest.target

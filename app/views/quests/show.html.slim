@@ -1,4 +1,4 @@
 h3 #{@quest.name}
 p Описание: #{@quest.description}
 p Награда: #{coiner(@quest.reward)}
-p Срок: #{@quest.limitation? ? (quest_limitation(@quest.limitation)) : "бессрочно"}
+p Срок: #{quest_endtime(@quest)}

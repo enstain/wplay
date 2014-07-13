@@ -3,8 +3,22 @@
     h3.panel-title #{action_date(quest.c_at)}
   .panel-body
     .media
-	  /a.pull-left[href=polymorphic_path(action.action_object)]
-	    = image_tag(action.action_object.get_thumb_avatar, class: "media-object", size: "40x40")
+	  = link_to polymorphic_path(quest), class: "pull-left" do
+	    = image_tag(quest.get_thumb_avatar, class: "media-object", size: "40x40")
 	  .media-body
 	    h4.media-heading #{quest.name}
-	    == quest.description
+	    p
+	      == quest.description
+	    p
+	      |Награда: 
+	      span.label.label-warning #{coiner(quest.reward)}
+	      |&nbsp;Срок: 
+	      span.label.label-danger #{quest_endtime(quest)}
+	    - if !params[:for]
+	      p Кому: #{quest.target.text}
+	    = link_to "Подробнее", quest_path(quest), class: "btn btn-primary"
+	    - if !current_worker.assigned_quests.include?(quest)
+	      = link_to "Взять на выполнение", quests_get_path(quest), class: "btn btn-success"
+	    - else
+	      |&nbsp;
+	      span Вы взяли этот квест на выполнение

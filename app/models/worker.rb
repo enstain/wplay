@@ -50,7 +50,8 @@ class Worker
   has_many :actions, as: :action_object, dependent: :destroy
 
   has_and_belongs_to_many :quests
-  has_many :assigned_quests, :foreign_key => 'worker_id', :class_name => "Quest"
+
+  has_many :assignments
 
   field :coins, type: Integer, default: 0
   field :xp, type: Integer, default: 0
@@ -108,11 +109,18 @@ class Worker
     @quests_for_all = Quest.company(self.company).for_all.all.to_a
     @quests_for_my_department = self.department.quests.all.to_a
     @quests_for_me = self.quests.all.to_a
-    return @quests_for_all + @quests_for_my_department + @quests_for_me
+    @all = @quests_for_all + @quests_for_my_department + @quests_for_me
+    @q_array = @all.sort_by { |a| a.created_at }
+    @q_array.reverse!
+    return @q_array
   end
 
   def in_legale_quests(quest)
     self.legale_quests.include?(quest)
+  end
+
+  def assigned_quests
+    Quest.in(id: assignments.map(&:quest_id))
   end
 
   private

@@ -30,5 +30,7 @@ Wplay::Application.routes.draw do
   resources :workers
   resources :quests
 
+  get "/quests/get/:id", to: "quests#get", as: "quests_get"
+
   root to: "board#index"
 end
