@@ -1,0 +1,12 @@
+.row.progress_quest
+  .col-sm-8
+    .progress
+      .progress-bar.progress-bar-success[role="progressbar" aria-valuenow=assign.progress aria-valuemin="0" aria-valuemax=assign.quest.iterates style="width: #{assign.progress*100/assign.quest.iterates}%;"] 
+        span #{assign.progress*100/assign.quest.iterates}%
+  .col-sm-4
+    - if (assign.progress < assign.quest.iterates)
+      - if (worker_signed_in?) && (assign.worker == current_worker)
+        = link_to ">>", iterate_assignment_path(assign), class: "btn btn-success btn-block"
+    - else
+      h3
+        span.label.label-success ✓

@@ -16,6 +16,7 @@ class WorkersController < ApplicationController
 
   def edit
     @worker = Worker.company(current_company).find(current_worker)
+    @profile_page = true
   end
 
   def update

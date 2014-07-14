@@ -6,5 +6,5 @@
   .col-sm-6
     h3 
       |Выполнено подзадач: #{assign.progress} из #{assign.quest.iterates}&nbsp;
-      - if assign.progress < assign.quest.iterates
+      - if (assign.progress < assign.quest.iterates) && (worker_signed_in?) && (assign.worker == current_worker)
         = link_to ">>", iterate_assignment_path(assign), class: "btn btn-success"

@@ -13,7 +13,7 @@
       .progress-bar.progress-bar-success[role="progressbar" aria-valuenow=@worker.xp_current aria-valuemin="0" aria-valuemax=@worker.xp_to_next_level style="width: #{@worker.xp_current*100/@worker.xp_to_next_level}%;"] 
         span #{@worker.xp_current} (#{@worker.xp_to_next_level})
 
-    .row
+    .row.worker-status
       span.col-md-6.col-sm-12[title="Уровень"]
         .panel.panel-default.worker-status-badge
           .panel-body
@@ -32,6 +32,13 @@
             h3 #{@worker.place_in_rating} из #{@worker.company.workers.count}
             hr
             p место в рейтинге
+    hr
+    .row
+      .col-sm-12
+        h4 Выполняемые квесты
+      - for quest in @worker.assigned_quests.order_by(limitation: -1).limit(5)
+        .col-sm-12
+          = render "quests/small", quest: quest, worker: @worker
 
   .col-sm-8
 

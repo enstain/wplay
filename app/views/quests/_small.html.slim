@@ -1,0 +1,7 @@
+.panel.panel-default
+  .panel-heading
+    h3.panel-title Срок до: #{quest_endtime(quest)}
+  .panel-body
+    .media-body
+      h4.media-heading #{quest.name}
+      = render "quests/assign_small", assign: worker.assignment(quest)

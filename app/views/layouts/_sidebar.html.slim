@@ -16,15 +16,27 @@
     .navbar-collapse.collapse.sidebar-navbar-collapse
       ul.nav.navbar-nav
         - if admin_signed_in? || worker_signed_in?
-          = link_to "Рейтинг", rating_path(), class: "list-group-item"
+          = link_to "Рейтинг", rating_path(), class: "list-group-item #{@rating_page ? 'active' : ''}"
           
         - if admin_signed_in?
-          = link_to "Админка", control_index_path(), class: "list-group-item"
+          = link_to "Админка", "#", class: "list-group-item", :data => { toggle: "collapse", target: "#admin" }
+          #admin.collapse[class="#{ @admin_page ? 'in' : ''}"]
+            ul.nav.nav-pills
+              li[class="#{(params[:action] == 'index') && @admin_page ? 'active' : ''}"]
+                = link_to "Раздача монет", control_index_path()
+              li[class="#{params[:action] == 'invite' ? 'active' : ''}"]
+                = link_to "Пригласить сотрудника", control_invite_path()
+              li[class="#{params[:action] == 'new_quest' ? 'active' : ''}"]
+                = link_to "Добавить квест", control_new_quest_path()
+              li[class="#{params[:action] == 'completed_quests' ? 'active' : ''}"]
+                = link_to control_completed_quests_path() do
+                  |Выполненные квесты
+                  span.badge #{Assignment.completed("non_checked").count}
           = link_to "Выйти", destroy_admin_session_path, :method => :delete, class: "list-group-item"
             
         - if worker_signed_in?
-          = link_to "Квесты", quests_path(), class: "list-group-item"
-          = link_to "Настройки", edit_path(), class: "list-group-item"
+          = link_to "Квесты", quests_path(), class: "list-group-item #{@quest_page ? 'active' : ''}"
+          = link_to "Настройки", edit_path(), class: "list-group-item #{@profile_page ? 'active' : ''}"
           = link_to "Выйти", destroy_worker_session_path, :method => :delete, class: "list-group-item"
 
         - unless worker_signed_in? || admin_signed_in?

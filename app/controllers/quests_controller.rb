@@ -1,4 +1,7 @@
 class QuestsController < ApplicationController
+
+  before_action :quest_page
+
   def show
   	@quest = Quest.company(current_company).find(params[:id])
   end
@@ -26,5 +29,10 @@ class QuestsController < ApplicationController
   	@assignment = Assignment.create(quest_id: @quest.id, worker_id: current_worker.id)
   	@assignment.save
   	redirect_to quests_path
+  end
+
+  private
+  def quest_page 
+    @quest_page = true
   end
 end

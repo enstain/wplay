@@ -15,7 +15,9 @@ Wplay::Application.routes.draw do
   post "control/invited"
   get "control/new_quest"
   post "control/create_quest"
+  get "control/completed_quests"
   post "control/update_worker/:id", to: "control#update_worker", as: "control_update_worker"
+  get "control/accept_quest/:id", to: "control#accept_quest", as: "control_accept_quest"
   
   get "/workers/sign_in_token", to: "workers#sign_in_token", as: "sign_in_token", via: :get
   get "/workers/test_sign_in", to: "workers#test_sign_in", as: "test_sign_in", via: :get

@@ -31,7 +31,7 @@ class Quest
   end
 
   def assigned_workers
-    Worker.in(id: appointments.map(&:worker_id))
+    Worker.in(id: assignments.map(&:worker_id))
   end
 
 end

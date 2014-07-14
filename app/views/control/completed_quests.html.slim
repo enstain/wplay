@@ -1,0 +1,22 @@
+
+- if @completed.count > 0
+  table.table
+    thead
+      tr
+        th 
+        th Сотрудник
+        th Квест
+        th
+    tbody
+      - for complete in @completed
+        tr
+          td
+            = image_tag(complete.worker.get_thumb_avatar, size: "40x40")
+          td 
+            = link_to complete.worker.name, worker_path(complete.worker)
+          td 
+            = link_to complete.quest.name, quest_path(complete.quest)
+          td
+            = link_to "Выполнен", control_accept_quest_path(complete), class: "btn btn-primary"
+- else 
+  h3 Нет выполненных квестов, ожидающих подтверждения модератора

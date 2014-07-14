@@ -33,6 +33,7 @@ class BoardController < ApplicationController
   end
 
   def rating
+    @rating_page = true
   	if params[:department]
   	  @department = Department.company(current_company).where(id: params[:department]).first
   	  if @department

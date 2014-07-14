@@ -1,31 +1,20 @@
 = render "partials/flash"
 
-.row
-  .col-sm-12
-    ul.nav.nav-pills
-      li
-        = link_to "Пригласить сотрудника", control_invite_path()
-      li
-        = link_to "Добавить квест", control_new_quest_path()
-
 hr
 
 table.table
   thead
     tr
       th #
-      th name
-      th email
-      th department
-      th coins
+      th Имя
+      th Email
+      th Отдел
+      th Монеты
   tbody
     - for worker in @workers
       tr
         td
-          - if worker.avatar?
-            = image_tag(worker.avatar.thumb) 
-          - else
-            = image_tag("ava_default.gif", size: "64x64")
+          = image_tag(worker.get_thumb_avatar, size: "64x64") 
         td 
           = link_to worker.name, worker_path(worker)
         td #{worker.email}
