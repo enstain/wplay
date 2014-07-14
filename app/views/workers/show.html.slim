@@ -32,13 +32,15 @@
             h3 #{@worker.place_in_rating} из #{@worker.company.workers.count}
             hr
             p место в рейтинге
-    hr
-    .row
-      .col-sm-12
-        h4 Выполняемые квесты
-      - for quest in @worker.assigned_quests.order_by(limitation: -1).limit(5)
+
+    - if @worker.assigned_quests.count > 0
+      hr
+      .row
         .col-sm-12
-          = render "quests/small", quest: quest, worker: @worker
+          h4 Выполняемые квесты
+        - for quest in @worker.assigned_quests.order_by(limitation: -1).limit(5)
+          .col-sm-12
+            = render "quests/small", quest: quest, worker: @worker
 
   .col-sm-8
 
