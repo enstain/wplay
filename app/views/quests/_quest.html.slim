@@ -17,8 +17,8 @@
 	    - if !params[:for]
 	      p Кому: #{quest.target.text}
 	    = link_to "Подробнее", quest_path(quest), class: "btn btn-primary"
+	    |&nbsp;
 	    - if !current_worker.assigned_quests.include?(quest)
-	      = link_to "Взять на выполнение", quests_get_path(quest), class: "btn btn-success"
+	      = link_to "Взять на выполнение", get_quest_path(quest), class: "btn btn-success"
 	    - else
-	      |&nbsp;
 	      span Вы взяли этот квест на выполнение

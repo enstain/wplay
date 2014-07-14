@@ -1,7 +1,7 @@
 .row.marketing
   .col-lg-12
     h3 
-      |Квесты&nbsp;
+      |Квесты&nbsp;      
       span.btn-group
         button.btn.btn-primary.dropdown-toggle[type="button" data-toggle="dropdown"]
           
@@ -31,6 +31,8 @@
 	        = link_to "для моего отдела (#{current_worker.department.quests.count})", quests_path(for: "department")
   	      li
   	        = link_to "для меня (#{current_worker.quests.count})", quests_path(for: "me")
+      |&nbsp;
+      = link_to "Показать квесты на исполнении", assigned_quests_path(), class: "btn btn-primary"
             
 		  
   	hr

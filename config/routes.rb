@@ -28,9 +28,10 @@ Wplay::Application.routes.draw do
   post "/registered", to: "board#registered", as: "done_register"
 
   resources :workers
-  resources :quests
-
-  get "/quests/get/:id", to: "quests#get", as: "quests_get"
+  resources :quests do
+    get :get, on: :member
+    get :assigned, on: :collection
+  end
 
   root to: "board#index"
 end

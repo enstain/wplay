@@ -36,6 +36,7 @@ gem 'mongoid-sequence', github: 'xronos-i-am/mongoid-sequence'
 gem 'mongoid_nested_set', '0.1.3'
 gem 'mongoid_search'
 gem 'mongoid_slug', '~> 3.0.0'
+gem 'mongoid_paranoia'
 
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'carrierwave-meta', github: 'gzigzigzeo/carrierwave-meta' # github has md5

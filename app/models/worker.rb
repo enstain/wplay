@@ -123,6 +123,10 @@ class Worker
     Quest.in(id: assignments.map(&:quest_id))
   end
 
+  def assignment(quest)
+    Assignment.where(quest: quest, worker: self).first
+  end
+
   private
   
   def generate_authentication_token

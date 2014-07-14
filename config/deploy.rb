@@ -87,6 +87,7 @@ namespace :deploy do
     transfer :up, 'config/mongoid_production.yml', "#{release_path}/config/mongoid.yml", via: :scp
     transfer :up, 'config/mail.yml', "#{release_path}/config/mail.yml", via: :scp
     transfer :up, 'db/seeds.rb', "#{release_path}/db/seeds.rb", via: :scp
+    run "db:mongoid:create_indexes RAILS_ENV=production"
   end
 end
 

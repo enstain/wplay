@@ -16,6 +16,11 @@ class QuestsController < ApplicationController
 	  	end
   end
 
+  def assigned
+    @quests = current_worker.assigned_quests
+    render action: "index"
+  end
+
   def get
   	@quest = Quest.find(params[:id])
   	@assignment = Assignment.create(quest_id: @quest.id, worker_id: current_worker.id)
