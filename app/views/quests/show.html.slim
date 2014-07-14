@@ -2,3 +2,8 @@ h3 #{@quest.name}
 p Описание: #{@quest.description}
 p Награда: #{coiner(@quest.reward)}
 p Срок: #{quest_endtime(@quest)}
+
+- if !current_worker.assigned_quests.include?(@quest)
+  = link_to "Взять на выполнение", get_quest_path(@quest), class: "btn btn-success"
+- else
+  = render "quests/assign", assign: current_worker.assignment(@quest)

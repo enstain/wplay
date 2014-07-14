@@ -33,5 +33,9 @@ Wplay::Application.routes.draw do
     get :assigned, on: :collection
   end
 
+  resources :assignments do
+    get :iterate, on: :member
+  end
+
   root to: "board#index"
 end

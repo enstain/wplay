@@ -18,7 +18,8 @@
 	      p Кому: #{quest.target.text}
 	    = link_to "Подробнее", quest_path(quest), class: "btn btn-primary"
 	    |&nbsp;
-	    - if !current_worker.assigned_quests.include?(quest)
-	      = link_to "Взять на выполнение", get_quest_path(quest), class: "btn btn-success"
-	    - else
-	      span Вы взяли этот квест на выполнение
+  .panel-footer
+    - if !current_worker.assigned_quests.include?(quest)
+      = link_to "Взять на выполнение", get_quest_path(quest), class: "btn btn-success"
+    - else
+      = render "quests/assign", assign: current_worker.assignment(quest)
