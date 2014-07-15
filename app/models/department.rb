@@ -6,6 +6,7 @@ class Department
 
   has_and_belongs_to_many :quests
 
+  validates :name, presence: true
   field :name
 
   scope :company, ->(company) { where(company: company) }

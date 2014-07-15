@@ -1,0 +1,7 @@
+= render "partials/flash"
+
+= simple_form_for @department, url: control_update_department_path(@department) do |f|
+  .form-inputs
+
+  	= f.input :name, label: "Название"
+    = f.button :submit, "Сохранить", class: "btn-block"

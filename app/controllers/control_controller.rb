@@ -61,7 +61,7 @@ class ControlController < ApplicationController
         Action.create(action_object: @quest, type: :new_quest, company: current_company, tie: ApplicationController.helpers.quest_for(@quest))
         redirect_to control_new_quest_path
       else
-        flash[:error] = @worker.errors.full_messages.join("\n")
+        flash[:error] = @quest.errors.full_messages.join("\n")
         render "new_quest"
       end
   end
@@ -84,6 +84,57 @@ class ControlController < ApplicationController
       @worker.save
     end
     redirect_to control_completed_quests_path()
+  end
+
+  def departments
+    @department_page = true
+    @departments = Department.company(current_company).all
+  end
+
+  def new_department
+    @department = Department.new
+  end
+
+  def create_department
+    params.permit!
+    @department = Department.create(params[:department])
+    @department.company = current_company
+    
+      if @department.save
+        flash[:notice] = 'Отдел добавлен'
+        redirect_to control_new_department_path
+      else
+        flash[:error] = @department.errors.full_messages.join("\n")
+        render "new_department"
+      end
+  end
+
+  def edit_department
+    @department = Department.find(params[:id])
+  end
+
+  def update_department
+    params.permit!
+    @department = Department.find(params[:id])
+    if @department.update_attributes(params[:department])
+       flash[:notice] = 'Сохранено'
+       redirect_to control_departments_path()
+    else
+       flash[:error] = 'Ошибка'
+       redirect_to control_edit_department_path(@department)
+    end
+  end
+
+  def destroy_department
+    @department = Department.find(params[:id])
+    if @department.workers.count > 0
+      flash[:error] = "Нельзя удалить непустой отдел"
+      redirect_to control_departments_path()
+    else
+      @department.destroy
+      flash[:notice] = 'Отдел удалён'
+      redirect_to control_departments_path()
+    end
   end
 
   private

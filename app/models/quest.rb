@@ -6,6 +6,11 @@ class Quest
   belongs_to :company
   has_many :actions, as: :action_object, dependent: :destroy
 
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :iterates, presence: true
+  validates :reward, presence: true
+
   field :name, type: String
   
   field :target, type: String

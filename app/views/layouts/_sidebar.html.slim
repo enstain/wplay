@@ -24,8 +24,13 @@
             ul.nav.nav-pills
               li[class="#{(params[:action] == 'index') && @admin_page ? 'active' : ''}"]
                 = link_to "Раздача монет", control_index_path()
-              li[class="#{(params[:action] == 'invite') && @admin_page ? 'active' : ''}"]
-                = link_to "Пригласить сотрудника", control_invite_path()
+              - if Department.company(current_company).count > 0
+                li[class="#{(params[:action] == 'invite') && @admin_page ? 'active' : ''}"]
+                  = link_to "Пригласить сотрудника", control_invite_path()
+              li[class="#{(@department_page && @admin_page) ? 'active' : ''}"]
+                = link_to control_departments_path() do
+                  |Отделы 
+                  span.badge #{Department.company(current_company).count}
               li[class="#{(params[:action] == 'new_quest') && @admin_page ? 'active' : ''}"]
                 = link_to "Добавить квест", control_new_quest_path()
               li[class="#{(params[:action] == 'completed_quests') && @admin_page ? 'active' : ''}"]

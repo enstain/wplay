@@ -26,6 +26,6 @@ h3
       li 
         = link_to "для всех (#{Quest.company(current_company).for_all.count})", quests_path(for: "all")
       li
-      = link_to "для моего отдела (#{current_worker.department.quests.count})", quests_path(for: "department")
+        = link_to "для моего отдела (#{current_worker.department.quests.count})", quests_path(for: "department")
       li
         = link_to "для меня (#{current_worker.quests.count})", quests_path(for: "me")

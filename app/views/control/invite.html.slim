@@ -7,7 +7,7 @@
     = f.input :name, required: true, type: "text", label: false, placeholder: "ФИО сотрудника"
     = f.input :email, required: true, type: "email", label: false, placeholder: "E-mail сотрудника"
     = f.input :sex, required: true, type: "text", label: "Пол"
-    = f.association :department, collection: Department.all, required: true, label: "Отдел"
+    = f.association :department, collection: Department.company(current_company).all, required: true, label: "Отдел"
     = f.hidden_field :password, value: @pass
     = f.hidden_field :password_confirmation, value: @pass
     = f.button :submit, "Добавить", class: "btn-block"

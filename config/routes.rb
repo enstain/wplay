@@ -18,6 +18,13 @@ Wplay::Application.routes.draw do
   get "control/completed_quests"
   post "control/update_worker/:id", to: "control#update_worker", as: "control_update_worker"
   get "control/accept_quest/:id", to: "control#accept_quest", as: "control_accept_quest"
+
+  get "control/departments"
+  get "control/new_department"
+  post "control/create_department"
+  get "control/edit_department/:id", to: "control#edit_department", as: "control_edit_department"
+  patch "control/update_department/:id", to: "control#update_department", as: "control_update_department"
+  get "control/destroy_department/:id", to: "control#destroy_department", as: "control_destroy_department"
   
   get "/workers/sign_in_token", to: "workers#sign_in_token", as: "sign_in_token", via: :get
   get "/workers/test_sign_in", to: "workers#test_sign_in", as: "test_sign_in", via: :get
@@ -38,6 +45,11 @@ Wplay::Application.routes.draw do
   resources :assignments do
     get :iterate, on: :member
   end
+
+  #resources :departments, 
+  #namespace :control do
+  #  resources :departments
+  #end
 
   root to: "board#index"
 end
