@@ -24,18 +24,29 @@
             ul.nav.nav-pills
               li[class="#{(params[:action] == 'index') && @admin_page ? 'active' : ''}"]
                 = link_to "Раздача монет", control_index_path()
-              li[class="#{params[:action] == 'invite' ? 'active' : ''}"]
+              li[class="#{(params[:action] == 'invite') && @admin_page ? 'active' : ''}"]
                 = link_to "Пригласить сотрудника", control_invite_path()
-              li[class="#{params[:action] == 'new_quest' ? 'active' : ''}"]
+              li[class="#{(params[:action] == 'new_quest') && @admin_page ? 'active' : ''}"]
                 = link_to "Добавить квест", control_new_quest_path()
-              li[class="#{params[:action] == 'completed_quests' ? 'active' : ''}"]
+              li[class="#{(params[:action] == 'completed_quests') && @admin_page ? 'active' : ''}"]
                 = link_to control_completed_quests_path() do
                   |Выполненные квесты
                   span.badge #{Assignment.completed("non_checked").count}
           = link_to "Выйти", destroy_admin_session_path, :method => :delete, class: "list-group-item"
             
         - if worker_signed_in?
-          = link_to "Квесты", quests_path(), class: "list-group-item #{@quest_page ? 'active' : ''}"
+          = link_to "Квесты", "#", class: "list-group-item", :data => { toggle: "collapse", target: "#quest" }
+          #quest.collapse[class="#{ @quest_page ? 'in' : ''}"]
+            ul.nav.nav-pills
+              li[class="#{(params[:action] == 'index') && @quest_page ? 'active' : ''}"]
+                = link_to quests_path() do
+                  |Список квестов
+                  span.badge #{current_worker.legale_quests.count}
+              li[class="#{(params[:action] == 'assigned') && @quest_page ? 'active' : ''}"]
+                = link_to assigned_quests_path() do
+                  |Мои квесты
+                  span.badge #{current_worker.assigned_quests.count}
+
           = link_to "Настройки", edit_path(), class: "list-group-item #{@profile_page ? 'active' : ''}"
           = link_to "Выйти", destroy_worker_session_path, :method => :delete, class: "list-group-item"
 

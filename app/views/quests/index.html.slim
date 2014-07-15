@@ -1,41 +1,11 @@
 .row.marketing
   .col-lg-12
-    h3 
-      |Квесты&nbsp;      
-      span.btn-group
-        button.btn.btn-primary.dropdown-toggle[type="button" data-toggle="dropdown"]
-          
-          - if !params[:for]
-            span.drop-title любые
-            |&nbsp;(#{current_worker.legale_quests.count})&nbsp;
+    - if params[:action] == "index"
+      = render "quests/select"
+    - else
+      h3 Мои квесты
+      
+    hr
 
-          - if params[:for] == "all"
-            span.drop-title для всех
-            |&nbsp;(#{Quest.company(current_company).for_all.count})&nbsp;
-
-          - if params[:for] == "department"
-            span.drop-title для моего отдела
-            |&nbsp;(#{current_worker.department.quests.count})&nbsp;
-
-          - if params[:for] == "me"
-          	span.drop-title для меня
-          	|&nbsp;(#{current_worker.quests.count})&nbsp;
-
-          span.caret
-        ul.dropdown-menu[role="menu"]
-          li 
-            = link_to "любые (#{current_worker.legale_quests.count})", quests_path()
-          li 
-            = link_to "для всех (#{Quest.company(current_company).for_all.count})", quests_path(for: "all")
-          li
-	        = link_to "для моего отдела (#{current_worker.department.quests.count})", quests_path(for: "department")
-  	      li
-  	        = link_to "для меня (#{current_worker.quests.count})", quests_path(for: "me")
-      |&nbsp;
-      = link_to "Показать квесты на исполнении", assigned_quests_path(), class: "btn btn-primary"
-            
-		  
-  	hr
-
-	- for quest in @quests do
-	  = render "quests/quest", quest: quest
+  	- for quest in @quests
+  	  = render "quests/quest", quest: quest
