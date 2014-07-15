@@ -51,7 +51,7 @@ class Worker
 
   has_and_belongs_to_many :quests
 
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
 
   field :coins, type: Integer, default: 0
   field :xp, type: Integer, default: 0

@@ -1,7 +1,9 @@
 module ApplicationHelper
 
 	def coiner(coins)
-		locale = coins.to_s + " " + Russian.p(coins, "садакоин", "садакоина", "садакоинов")
+		@company = current_company
+		@coins = @company.coiner ? Russian.p(coins, @company.coiner.first, @company.coiner.second, @company.coiner.third) : Russian.p(coins, "монета", "монеты", "монет")
+		locale = coins.to_s + " " + @coins
 		"#{locale}"
 	end
 

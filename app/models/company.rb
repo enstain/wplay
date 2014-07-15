@@ -25,6 +25,8 @@ class Company
   has_many :departments, dependent: :destroy
   has_many :quests, dependent: :destroy
 
+  embeds_one :coiner
+
   accepts_nested_attributes_for :admins
 
   private 

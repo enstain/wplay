@@ -47,6 +47,10 @@ class ControlController < ApplicationController
     end
   end
 
+  def quests
+    @quests = Quest.company(current_company)
+  end
+
   def new_quest
     @quest = Quest.new
   end
@@ -64,6 +68,30 @@ class ControlController < ApplicationController
         flash[:error] = @quest.errors.full_messages.join("\n")
         render "new_quest"
       end
+  end
+
+  def edit_quest
+    @quest = Quest.find(params[:id])
+  end
+
+  def update_quest
+    params.permit!
+    @quest = Quest.find(params[:id])
+    if @quest.update_attributes(params[:quest])
+       flash[:notice] = 'Сохранено'
+       Action.create(action_object: @quest, type: :update_quest, company: current_company, tie: ApplicationController.helpers.quest_for(@quest))
+       redirect_to control_quests_path()
+    else
+       flash[:error] = 'Ошибка'
+       redirect_to control_edit_quest_path(@quest)
+    end
+  end
+
+  def destroy_quest
+    @quest = Quest.find(params[:id])
+    @quest.destroy
+    flash[:notice] = 'Квест удалён'
+    redirect_to control_quests_path()
   end
 
   def completed_quests

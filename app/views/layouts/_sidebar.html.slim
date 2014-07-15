@@ -31,8 +31,8 @@
                 = link_to control_departments_path() do
                   |Отделы 
                   span.badge #{Department.company(current_company).count}
-              li[class="#{(params[:action] == 'new_quest') && @admin_page ? 'active' : ''}"]
-                = link_to "Добавить квест", control_new_quest_path()
+              li[class="#{@quest_page && @admin_page ? 'active' : ''}"]
+                = link_to "Квесты", control_quests_path()
               li[class="#{(params[:action] == 'completed_quests') && @admin_page ? 'active' : ''}"]
                 = link_to control_completed_quests_path() do
                   |Выполненные квесты

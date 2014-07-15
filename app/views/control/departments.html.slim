@@ -18,4 +18,4 @@ table.table
         td
           = link_to "Редактировать", control_edit_department_path(department)
           <br/>
-          = link_to "Удалить", control_destroy_department_path(department)
+          = link_to "Удалить", control_destroy_department_path(department), :confirm => 'Вы уверены, что хотите удалить отдел?'

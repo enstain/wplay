@@ -21,7 +21,7 @@ class Quest
   has_and_belongs_to_many :workers
   has_and_belongs_to_many :departments
 
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
 
   field :limitation, type: DateTime
   field :reward, type: Integer, default: 1

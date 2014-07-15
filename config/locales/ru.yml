@@ -5,6 +5,7 @@ ru:
         plain_action: "На сайте что-то произошло"
         new_user: "Встречайте нового сотрудника"
         new_quest: "Новое задание"
+        update_quest: "Задание изменено"
         user_get_coins: "Сотрудник получил монеты"
     quest:
       target:

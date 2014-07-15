@@ -13,9 +13,6 @@ Wplay::Application.routes.draw do
   match "/control", to: "control#index", as: "control_index", via: :get
   get "control/invite"
   post "control/invited"
-  get "control/new_quest"
-  post "control/create_quest"
-  get "control/completed_quests"
   post "control/update_worker/:id", to: "control#update_worker", as: "control_update_worker"
   get "control/accept_quest/:id", to: "control#accept_quest", as: "control_accept_quest"
 
@@ -25,6 +22,14 @@ Wplay::Application.routes.draw do
   get "control/edit_department/:id", to: "control#edit_department", as: "control_edit_department"
   patch "control/update_department/:id", to: "control#update_department", as: "control_update_department"
   get "control/destroy_department/:id", to: "control#destroy_department", as: "control_destroy_department"
+
+  get "control/quests"
+  get "control/new_quest"
+  post "control/create_quest"
+  get "control/edit_quest/:id", to: "control#edit_quest", as: "control_edit_quest"
+  patch "control/update_quest/:id", to: "control#update_quest", as: "control_update_quest"
+  get "control/destroy_quest/:id", to: "control#destroy_quest", as: "control_destroy_quest"
+  get "control/completed_quests"
   
   get "/workers/sign_in_token", to: "workers#sign_in_token", as: "sign_in_token", via: :get
   get "/workers/test_sign_in", to: "workers#test_sign_in", as: "test_sign_in", via: :get
