@@ -52,6 +52,7 @@ class Worker
   has_and_belongs_to_many :quests
 
   has_many :assignments, dependent: :destroy
+  has_many :gaven_achievements, dependent: :destroy
 
   field :coins, type: Integer, default: 0
   field :xp, type: Integer, default: 0
@@ -121,6 +122,10 @@ class Worker
 
   def assigned_quests
     Quest.in(id: assignments.map(&:quest_id))
+  end
+
+  def gaven_achieves
+    Achievement.in(id: gaven_achievements.map(&:achievement_id))
   end
 
   def assignment(quest)

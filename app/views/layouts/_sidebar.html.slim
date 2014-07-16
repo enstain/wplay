@@ -22,8 +22,8 @@
           = link_to "Админка", "#", class: "list-group-item", :data => { toggle: "collapse", target: "#admin" }
           #admin.collapse[class="#{ @admin_page ? 'in' : ''}"]
             ul.nav.nav-pills
-              li[class="#{(params[:action] == 'index') && @admin_page ? 'active' : ''}"]
-                = link_to "Раздача монет", control_index_path()
+              li[class="#{(params[:action] == 'get_coins') && @admin_page ? 'active' : ''}"]
+                = link_to "Раздача наград", control_index_path()
               - if Department.company(current_company).count > 0
                 li[class="#{(params[:action] == 'invite') && @admin_page ? 'active' : ''}"]
                   = link_to "Пригласить сотрудника", control_invite_path()
@@ -33,6 +33,8 @@
                   span.badge #{Department.company(current_company).count}
               li[class="#{@quest_page && @admin_page ? 'active' : ''}"]
                 = link_to "Квесты", control_quests_path()
+              li[class="#{@achieve_page && @admin_page ? 'active' : ''}"]
+                = link_to "Награды", control_achievements_path()
               li[class="#{(params[:action] == 'completed_quests') && @admin_page ? 'active' : ''}"]
                 = link_to control_completed_quests_path() do
                   |Выполненные квесты

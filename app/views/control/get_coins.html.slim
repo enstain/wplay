@@ -1,0 +1,32 @@
+= render "partials/flash"
+
+hr
+
+table.table
+  thead
+    tr
+      th #
+      th Имя
+      th Email
+      th Отдел
+      th Монеты
+      th Бейджи
+  tbody
+    - for worker in @workers
+      tr
+        td
+          = image_tag(worker.get_thumb_avatar, size: "64x64") 
+        td 
+          = link_to worker.name, worker_path(worker)
+        td #{worker.email}
+        td #{worker.department.name}
+        td
+          #{worker.coins} |
+          = simple_form_for worker, url: control_coin_worker_path(worker), method: :post do |f|
+            = number_field_tag :add_coins, 0, in: 1..100
+            = f.submit "+"
+        td
+          = simple_form_for worker, url: control_achieve_worker_path(worker), method: :post do |f|
+            = select_tag :achievement, options_from_collection_for_select(@achieves, "id", "name")
+            = f.submit "+"
+

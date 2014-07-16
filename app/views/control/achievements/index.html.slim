@@ -1,0 +1,22 @@
+= render "partials/flash"
+
+= link_to "Добавить награду", new_control_achievement_path(), class: "btn btn-primary"
+
+hr
+
+table.table
+  thead
+    tr
+      th
+      th Название
+      th
+  tbody
+    - for achieve in @achieves
+      tr
+        td 
+          = image_tag(achieve.badge, size: "32x32")
+        td #{achieve.name}
+        td
+          = link_to "Редактировать", edit_control_achievement_path(achieve)
+          <br/>
+          = link_to "Удалить", control_achievement_path(achieve), :confirm => 'Вы уверены, что хотите удалить награду?', method: :delete

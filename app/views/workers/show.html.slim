@@ -56,6 +56,13 @@
     - if @worker.about
   	  p Увлечения: #{@worker.about}
 
+    - if @worker.gaven_achievements.count > 0
+      hr
+      h4 Награды
+      .row
+        - for achieve in @worker.gaven_achievements
+          = render "workers/achieve", achieve: achieve
+
     hr
     h4 Последние события
     - for action in @actions

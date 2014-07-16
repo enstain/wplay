@@ -7,6 +7,7 @@ ru:
         new_quest: "Новое задание"
         update_quest: "Задание изменено"
         user_get_coins: "Сотрудник получил монеты"
+        user_get_achieve: "Награда нашла своего героя"
     quest:
       target:
         all: Всем

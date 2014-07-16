@@ -6,30 +6,14 @@ Wplay::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/adminka', as: 'rails_admin'
 
-  #get "quests/show"
-  #get "actions/add"
-  #get "workers/show"
-
-  match "/control", to: "control#index", as: "control_index", via: :get
+  match "/control", to: "control#get_coins", as: "control_index", via: :get
   get "control/invite"
   post "control/invited"
-  post "control/update_worker/:id", to: "control#update_worker", as: "control_update_worker"
-  get "control/accept_quest/:id", to: "control#accept_quest", as: "control_accept_quest"
+  post "control/coin_worker/:id", to: "control#coin_worker", as: "control_coin_worker"
+  post "control/achieve_worker/:id", to: "control#achieve_worker", as: "control_achieve_worker"
 
-  get "control/departments"
-  get "control/new_department"
-  post "control/create_department"
-  get "control/edit_department/:id", to: "control#edit_department", as: "control_edit_department"
-  patch "control/update_department/:id", to: "control#update_department", as: "control_update_department"
-  get "control/destroy_department/:id", to: "control#destroy_department", as: "control_destroy_department"
-
-  get "control/quests"
-  get "control/new_quest"
-  post "control/create_quest"
-  get "control/edit_quest/:id", to: "control#edit_quest", as: "control_edit_quest"
-  patch "control/update_quest/:id", to: "control#update_quest", as: "control_update_quest"
-  get "control/destroy_quest/:id", to: "control#destroy_quest", as: "control_destroy_quest"
   get "control/completed_quests"
+  get "control/accept_quest/:id", to: "control#accept_quest", as: "control_accept_quest"
   
   get "/workers/sign_in_token", to: "workers#sign_in_token", as: "sign_in_token", via: :get
   get "/workers/test_sign_in", to: "workers#test_sign_in", as: "test_sign_in", via: :get
@@ -51,10 +35,12 @@ Wplay::Application.routes.draw do
     get :iterate, on: :member
   end
 
-  #resources :departments, 
-  #namespace :control do
-  #  resources :departments
-  #end
+  # ADMIN CONTROL
+  resource :control do
+    resources :departments, :controller => 'control/departments'
+    resources :quests, :controller => 'control/quests'
+    resources :achievements, :controller => 'control/achievements'
+  end
 
   root to: "board#index"
 end

@@ -3,8 +3,9 @@ class ControlController < ApplicationController
   before_action :authenticate_admin!
   before_action :admin_page
 
-  def index
+  def get_coins
   	@workers = Worker.company(current_company).all.order_by(id: 1)
+    @achieves = Achievement.company(current_company).all
   end
 
   def invite
@@ -27,7 +28,7 @@ class ControlController < ApplicationController
       end
   end
 
-  def update_worker
+  def coin_worker
     @worker = Worker.find(params[:id])
     @acoins = params[:add_coins].to_i
     if @acoins > 0
@@ -47,51 +48,27 @@ class ControlController < ApplicationController
     end
   end
 
-  def quests
-    @quests = Quest.company(current_company)
-  end
-
-  def new_quest
-    @quest = Quest.new
-  end
-
-  def create_quest
-    params.permit!
-    @quest = Quest.create(params[:quest])
-    @quest.company = current_company
-    
-      if @quest.save
-        flash[:notice] = 'Квест добавлен'
-        Action.create(action_object: @quest, type: :new_quest, company: current_company, tie: ApplicationController.helpers.quest_for(@quest))
-        redirect_to control_new_quest_path
+  def achieve_worker
+    @worker = Worker.find(params[:id])
+    @achieve = Achievement.find(params[:achievement])
+    if @achieve
+      @gaven = GavenAchievement.where(achievement: @achieve, worker: @worker).first
+      if @gaven
+        @gaven.count+=1
       else
-        flash[:error] = @quest.errors.full_messages.join("\n")
-        render "new_quest"
+        @gaven = GavenAchievement.create(achievement_id: @achieve.id, worker_id: @worker.id)
       end
-  end
-
-  def edit_quest
-    @quest = Quest.find(params[:id])
-  end
-
-  def update_quest
-    params.permit!
-    @quest = Quest.find(params[:id])
-    if @quest.update_attributes(params[:quest])
-       flash[:notice] = 'Сохранено'
-       Action.create(action_object: @quest, type: :update_quest, company: current_company, tie: ApplicationController.helpers.quest_for(@quest))
-       redirect_to control_quests_path()
+      if @gaven.save
+         flash[:notice] = 'Сохранено'
+         Action.create(action_object: @worker, type: :user_get_achieve, tie: @achieve.name, company: current_company)
+         redirect_to control_index_path()
+      else
+         flash[:error] = 'Ошибка'
+         redirect_to control_index_path()
+      end
     else
-       flash[:error] = 'Ошибка'
-       redirect_to control_edit_quest_path(@quest)
+      redirect_to control_index_path()
     end
-  end
-
-  def destroy_quest
-    @quest = Quest.find(params[:id])
-    @quest.destroy
-    flash[:notice] = 'Квест удалён'
-    redirect_to control_quests_path()
   end
 
   def completed_quests
@@ -112,57 +89,6 @@ class ControlController < ApplicationController
       @worker.save
     end
     redirect_to control_completed_quests_path()
-  end
-
-  def departments
-    @department_page = true
-    @departments = Department.company(current_company).all
-  end
-
-  def new_department
-    @department = Department.new
-  end
-
-  def create_department
-    params.permit!
-    @department = Department.create(params[:department])
-    @department.company = current_company
-    
-      if @department.save
-        flash[:notice] = 'Отдел добавлен'
-        redirect_to control_new_department_path
-      else
-        flash[:error] = @department.errors.full_messages.join("\n")
-        render "new_department"
-      end
-  end
-
-  def edit_department
-    @department = Department.find(params[:id])
-  end
-
-  def update_department
-    params.permit!
-    @department = Department.find(params[:id])
-    if @department.update_attributes(params[:department])
-       flash[:notice] = 'Сохранено'
-       redirect_to control_departments_path()
-    else
-       flash[:error] = 'Ошибка'
-       redirect_to control_edit_department_path(@department)
-    end
-  end
-
-  def destroy_department
-    @department = Department.find(params[:id])
-    if @department.workers.count > 0
-      flash[:error] = "Нельзя удалить непустой отдел"
-      redirect_to control_departments_path()
-    else
-      @department.destroy
-      flash[:notice] = 'Отдел удалён'
-      redirect_to control_departments_path()
-    end
   end
 
   private

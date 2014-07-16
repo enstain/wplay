@@ -1,0 +1,8 @@
+.col-sm-3
+  .badge-container
+    = image_tag(achieve.achievement.badge, class: "img-circle img-responsive")
+    - if achieve.count > 1
+      span.label.label-success.label-count 
+        h3 x#{achieve.count}
+  p.text-center
+    span.label.label-success #{achieve.achievement.name}

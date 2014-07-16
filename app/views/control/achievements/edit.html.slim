@@ -1,0 +1,7 @@
+= render "partials/flash"
+
+= simple_form_for @achieve, url: control_achievement_path(@achieve), method: :patch do |f|
+  .form-inputs
+  	= f.input :name, label: "Название"
+  	= f.input :badge, label: "Иконка"
+    = f.button :submit, "Обновить", class: "btn-block"

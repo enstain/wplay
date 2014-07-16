@@ -1,6 +1,6 @@
 = render "partials/flash"
 
-= simple_form_for @department, url: control_update_department_path(@department) do |f|
+= simple_form_for @department, url: control_department_path(@department), method: :patch do |f|
   .form-inputs
 
   	= f.input :name, label: "Название"

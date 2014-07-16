@@ -57,3 +57,19 @@
     margin: 0;
   }
 }
+
+.badge-container {
+  position: relative;
+  margin-bottom: 10px;
+
+  .label-count {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+}

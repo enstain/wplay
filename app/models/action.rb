@@ -9,7 +9,7 @@ class Action
   belongs_to :company
   
   field :type
-  enumerize :type, in: [:plain_action, :new_user, :user_get_coins, :new_quest, :update_quest], default: :plain_action
+  enumerize :type, in: [:plain_action, :new_user, :user_get_coins, :user_get_achieve, :new_quest, :update_quest], default: :plain_action
 
   field :tie, type: String, default: ""
 
@@ -22,6 +22,8 @@ class Action
 	  	  "Сотрудник #{@link} был приглашён на сайт администратором"
 	  	when "user_get_coins"
 	  	  "Сотрудник #{@link} получил #{self.tie}"
+      when "user_get_achieve"
+        "Сотрудник #{@link} получил награду &laquo;#{self.tie}&raquo;"
       when "new_quest"
         "Добавлен новый квест #{@link} #{self.tie}"
       when "update_quest"
