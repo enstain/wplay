@@ -85,7 +85,7 @@ class ControlController < ApplicationController
       @acoins = @assignment.quest.reward
       @worker.coins += @acoins
       @worker.raise_xp(@acoins)
-      Action.create(action_object: @worker, type: :user_get_coins, tie: ApplicationController.helpers.coiner(@acoins)+" за выполненный квест &laquo;#{@assignment.quest.name}&raquo;", company: current_company)
+      Action.create(action_object: @worker, type: :user_get_coins, tie: ApplicationController.helpers.coiner(@acoins)+" за выполненный квест &laquo;#{@assignment.quest.name}&raquo;", company: @worker.company)
       @worker.save
     end
     redirect_to control_completed_quests_path()
