@@ -43,7 +43,7 @@ gem 'carrierwave-meta', github: 'gzigzigzeo/carrierwave-meta' # github has md5
 gem 'mini_magick', '~> 3.4'
 gem 'thumbkit'
 
-#gem 'nokogiri', '1.6.1'
+gem 'nokogiri'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
