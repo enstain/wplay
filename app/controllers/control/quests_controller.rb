@@ -1,12 +1,12 @@
 class Control::QuestsController < ControlController
 
+  before_action :quest_page
+
   def index
-    @quest_page = true
     @quests = Quest.company(current_company)
   end
 
   def new
-    @quest_page = true
     @quest = Quest.new
   end
 
@@ -26,7 +26,6 @@ class Control::QuestsController < ControlController
   end
 
   def edit
-    @quest_page = true
     @quest = Quest.find(params[:id])
   end
 
@@ -48,6 +47,11 @@ class Control::QuestsController < ControlController
     @quest.destroy
     flash[:notice] = 'Квест удалён'
     redirect_to control_quests_path()
+  end
+
+  private
+  def quest_page 
+    @quest_page = true
   end
 
 end

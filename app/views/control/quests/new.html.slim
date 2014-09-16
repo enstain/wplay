@@ -14,5 +14,5 @@
       .col-sm-12.form-inline
 	    = f.input :target, include_blank: false, :as => :radio_buttons, label: "Кому: "
     = f.association :workers, :input_html => {:style => "display:none"}, label: false
-    = f.association :departments, :input_html => {:style => "display:none"}, label: false
+    = f.association :departments, collection: Department.company(current_company).all, :input_html => {:style => "display:none"}, label: false
     = f.button :submit, "Добавить", class: "btn-block"

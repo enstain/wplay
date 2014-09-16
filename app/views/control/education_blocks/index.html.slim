@@ -1,0 +1,27 @@
+= render "partials/flash"
+
+= link_to "Добавить блок", new_control_education_block_path(), class: "btn btn-primary"
+
+hr
+
+table.table
+  thead
+    tr
+      th №
+      th Название
+      th Отдел
+      th
+  tbody
+    - for block in @blocks
+      tr
+        td #{block.order}
+        td #{block.name}
+        td 
+          - for dep in block.departments
+            #{dep.name},
+        td
+          = link_to "Слайды", control_slides_path(block)
+          <br/>
+          = link_to "Редактировать", edit_control_education_block_path(block)
+          <br/>
+          = link_to "Удалить", control_education_block_path(block), :confirm => 'Вы уверены, что хотите удалить блок?', method: :delete

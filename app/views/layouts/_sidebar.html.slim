@@ -39,6 +39,8 @@
                 = link_to control_completed_quests_path() do
                   |Выполненные квесты
                   span.badge #{Assignment.completed("non_checked").count}
+              li[class="#{@education_page && @admin_page ? 'active' : ''}"]
+                = link_to "Обучение", control_education_blocks_path()
           = link_to "Выйти", destroy_admin_session_path, :method => :delete, class: "list-group-item"
             
         - if worker_signed_in?

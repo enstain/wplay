@@ -40,6 +40,11 @@ Wplay::Application.routes.draw do
     resources :departments, :controller => 'control/departments'
     resources :quests, :controller => 'control/quests'
     resources :achievements, :controller => 'control/achievements'
+    resources :education_blocks, :controller => 'control/education_blocks' do
+      member do
+        resources :slides, :controller => 'control/slides'
+      end
+    end
   end
 
   root to: "board#index"

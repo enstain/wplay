@@ -34,7 +34,7 @@ default_run_options[:pty] = true
 
 # Имя вашего проекта в панели управления.
 # Не меняйте это значение без необходимости, оно используется дальше.
-set :application,     "workplay"
+set :application,     "wplay"
 
 # Сервер размещения проекта.
 set :deploy_server,   "neon.locum.ru"

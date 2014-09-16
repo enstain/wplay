@@ -1,0 +1,25 @@
+= render "partials/flash"
+
+= link_to "<< Назад", control_education_blocks_path()
+h1 #{@block.name}
+= link_to "Добавить слайд", new_control_slide_path(), class: "btn btn-primary"
+
+hr
+
+table.table
+  thead
+    tr
+      th №
+      th Название
+      th Тип
+      th
+  tbody
+    - for slide in @slides
+      tr
+        td #{slide.order}
+        td #{slide.name}
+        td #{}
+        td
+          = link_to "Редактировать", edit_control_slide_path(slide)
+          <br/>
+          = link_to "Удалить", control_slide_path(slide), :confirm => 'Вы уверены, что хотите удалить слайд?', method: :delete

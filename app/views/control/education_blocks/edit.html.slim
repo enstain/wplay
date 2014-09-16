@@ -1,0 +1,8 @@
+= render "partials/flash"
+
+= simple_form_for @block, url: control_education_block_path(@block), method: :patch do |f|
+  .form-inputs
+
+  	= f.input :name, label: "Название"
+  	= f.association :departments, collection: Department.company(current_company).all, label: "Назначение"
+    = f.button :submit, "Сохранить", class: "btn-block"
