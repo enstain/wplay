@@ -53,7 +53,7 @@ gem 'simple_form', '>= 2.1.0'
 
 gem "rails_admin"
 gem 'rails_admin_settings'
-gem "devise"
+gem "devise", '~> 3.2.4'
 gem 'unicorn'
 gem 'capistrano'
 
