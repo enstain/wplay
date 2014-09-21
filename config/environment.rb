@@ -6,7 +6,7 @@ require 'carrierwave/mongoid'
 SubdomainFu.configure do |config|
   config.tld_sizes = { :development => 1,
                           :test => 0,
-                          :production => 3 }
+                          :production => 1 }
   config.override_only_path = true
 end
 
